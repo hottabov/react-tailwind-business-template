@@ -12,6 +12,9 @@ A fast, responsive website template for small service businesses (painters, plum
 - Ready-made pages: Home, Services, Portfolio, Reviews, Blog, Contact
 - Fast markdown-driven content using `import.meta.glob`
 
+## Example
+https://melbourne-pro-painters.netlify.app/
+
 ---
 
 ## Quick Start
