@@ -1,0 +1,15 @@
+// Brand colour tokens used throughout custom SCSS
+// These mirror the Tailwind config so both systems stay in sync
+$brand-primary:   #ee8f0e;
+$brand-dark:      #af4f09;
+$text-light:      #1f2937;
+$text-dark:       #f3f4f6;
+$bg-light:        #ffffff;
+$bg-dark:         #0f1117;
+$card-dark:       #1a1d27;
+$border-dark:     #2a2d3a;
+
+// Typography scale (rem)
+$fs-base:  1.0625rem;   // 17px
+$fs-lg:    1.1875rem;   // 19px
+$lh-body:  1.75;

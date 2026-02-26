@@ -1,83 +1,90 @@
-# React & Tailwind CSS Small Business Template 🚀
+# React & Tailwind CSS — Small Business Template
 
-A modern, fast, and fully responsive website template designed specifically for small service businesses (painters, plumbers, landscapers, consultants, etc.). Built with React, Vite, and Tailwind CSS, featuring an integrated Netlify CMS for easy content management.
+A fast, responsive website template for small service businesses (painters, plumbers, landscapers, consultants, etc.). Built with React, Vite and Tailwind CSS, with optional Netlify CMS support for managing blog and portfolio content.
 
-## ✨ Features
+## Highlights
 
-- **Modern Stack**: React 18, Vite, and Tailwind CSS v3.
-- **Built-in Content Management**: Integrated with Netlify CMS for managing Blog posts and Portfolio projects without touching code.
-- **Fully Responsive**: Mobile-first design that looks great on all screen sizes.
-- **Dark/Light Mode**: User-toggleable theme with local storage persistence.
-- **SEO Optimized**: Dynamic meta tags using `react-helmet-async`.
-- **Ready-to-use Pages**:
-  - Home (Landing Page)
-  - Services (Grid & Detail pages)
-  - Portfolio (Filterable gallery & Detail pages)
-  - Customer Reviews (Star ratings & testimonials)
-  - Blog (Articles with sidebar)
-  - Contact (Form with validation using `react-hook-form`)
-- **Fast Performance**: Statically analyzed markdown loading using Vite's `import.meta.glob`.
+- Modern stack: React 18, Vite, Tailwind CSS v3
+- Optional Netlify CMS for content editing
+- Mobile-first, fully responsive layout
+- Dark / light theme toggle with localStorage
+- SEO-ready meta tags via `react-helmet-async`
+- Ready-made pages: Home, Services, Portfolio, Reviews, Blog, Contact
+- Fast markdown-driven content using `import.meta.glob`
 
-## 🛠️ Quick Start
+---
 
-### 1. Clone the repository
+## Quick Start
+
+1. Clone the repo
+
 ```bash
-  git clone https://github.com/hottabov/react-business-starter.git
-  cd react-business-starter
+git clone https://github.com/hottabov/react-tailwind-business-template.git
+cd react-tailwind-business-template
 ```
 
-### 2. Install dependencies
+2. Install dependencies
+
 ```bash
 npm install
 ```
-### 3. Run the development server
+
+3. Run the development server
+
 ```bash
 npm run dev
 ```
-Open http://localhost:5173 to view it in the browser.
 
-### 📁 Project Structure
-```bash
-text
-├── public/
-│   └── admin/               # Netlify CMS configuration
-├── src/
-│   ├── assets/              # Local images and static files
-│   ├── components/          # Reusable UI components (Header, Footer, CTA, etc.)
-│   ├── content/             # Markdown files for Blog and Portfolio (managed by CMS)
-│   ├── context/             # React Context (Theme settings)
-│   ├── data/                # Static data (Services, Reviews, SEO)
-│   ├── hooks/               # Custom hooks for parsing markdown & scroll events
-│   ├── pages/               # React Router page components
-│   └── styles/              # Global SCSS and Tailwind directives
+Open http://localhost:5173 in your browser.
+
+---
+
+## Project Structure
+
 ```
-### 🌐 Deployment & CMS Setup
-This template is optimized for Netlify.
+public/
+└─ admin/                  # Netlify CMS configuration (optional)
 
-Push your repository to GitHub.
+src/
+├─ assets/                 # Images and static assets
+├─ components/             # Reusable UI components
+├─ content/                # Markdown content (blog, portfolio)
+├─ context/                # React context (ThemeContext)
+├─ data/                   # Static data: services, reviews, seo
+├─ hooks/                  # Custom hooks for parsing & scroll behavior
+├─ pages/                  # Route components
+└─ styles/                 # Global SCSS + Tailwind directives
+```
 
-Log into Netlify and click "Add new site" -> "Import from Git".
+---
 
-Use the following build settings (automatically handled by netlify.toml):
+## Deployment & Netlify CMS
 
-Build command: npm run build
+This template is optimized for Netlify. Basic steps:
 
-Publish directory: dist
+- Push the repository to GitHub.
+- In Netlify: Add new site → Import from Git.
+- Build command: `npm run build`
+- Publish directory: `dist`
 
-Enable Netlify CMS:
+To enable Netlify CMS:
 
-Go to Site Settings > Identity > Enable Identity.
+1. In Netlify site settings, enable Identity.
+2. Enable Git Gateway under Services.
+3. Visit `https://your-site.netlify.app/admin/` to access the CMS.
 
-Scroll down to Services > Git Gateway > Enable Git Gateway.
+---
 
-Navigate to https://your-site.netlify.app/admin/ to log in and start adding blog posts and portfolio items!
+## Customization
 
-### 🎨 Customization
-Colors & Branding: Update the brand color palette in tailwind.config.js and src/styles/_variables.scss.
+- Colors & branding: edit `tailwind.config.js` and `src/styles/_variables.scss`.
+- Static content: update `src/data/` for services, reviews and site text.
+- Images: replace files in `src/assets/images/` with your assets.
+- Content: add or edit Markdown files in `src/content/` (blog & portfolio).
 
-Static Content: Update business info, services, and reviews in the src/data/ folder.
+---
 
-Images: Replace the demo images in src/assets/images/ with your own.
+## License
 
-### 📝 License
-This project is open-source and available under the MIT License.
+MIT License — feel free to use and adapt this template for your projects.
+
