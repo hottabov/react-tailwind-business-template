@@ -2,7 +2,7 @@
 title: "10 Questions to Ask Before Hiring a Painter in Melbourne"
 date: "2025-06-20"
 excerpt: "Not all painters are equal. Protect yourself from poor workmanship and budget blowouts with these simple questions."
-coverImage: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1624352908259-ec0b31e421ee?w=1200&q=80"
 author: "Lisa Hammond"
 category: "Tips & Advice"
 ---

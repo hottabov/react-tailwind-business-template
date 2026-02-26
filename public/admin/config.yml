@@ -1,0 +1,37 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog Posts"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",       name: "title",       widget: "string" }
+      - { label: "Date",        name: "date",        widget: "datetime" }
+      - { label: "Excerpt",     name: "excerpt",     widget: "text" }
+      - { label: "Cover Image", name: "coverImage",  widget: "image" }
+      - { label: "Author",      name: "author",      widget: "string" }
+      - { label: "Category",    name: "category",    widget: "string" }
+      - { label: "Body",        name: "body",        widget: "markdown" }
+
+  - name: "portfolio"
+    label: "Portfolio Projects"
+    folder: "src/content/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title",        name: "title",        widget: "string" }
+      - { label: "Date",         name: "date",         widget: "datetime" }
+      - { label: "Location",     name: "location",     widget: "string" }
+      - { label: "Category",     name: "category",     widget: "string", hint: "Interior, Exterior, Roof, Deck, Fence, Commercial" }
+      - { label: "Cover Image",  name: "coverImage",   widget: "image" }
+      - { label: "Before Image", name: "beforeImage",  widget: "image", required: false }
+      - { label: "After Image",  name: "afterImage",   widget: "image", required: false }
+      - { label: "Excerpt",      name: "excerpt",      widget: "text" }
+      - { label: "Body",         name: "body",         widget: "markdown", hint: "Describe what we did, what changed, before & after." }

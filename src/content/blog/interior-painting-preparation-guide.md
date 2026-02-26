@@ -1,8 +1,8 @@
 ---
 title: "The Complete Interior Painting Preparation Guide"
-date: "2025-10-22"
+date: "2026-01-12"
 excerpt: "80% of a quality paint job is in the preparation. Here is exactly how professionals prepare walls, ceilings and trim before a single brushstroke is applied."
-coverImage: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1595814433015-e6f5ce69614e?w=1200&q=80"
 author: "Lisa Hammond"
 category: "How-To"
 ---

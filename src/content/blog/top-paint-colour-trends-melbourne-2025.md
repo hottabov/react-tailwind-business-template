@@ -2,7 +2,7 @@
 title: "Top Interior Paint Colour Trends in Melbourne for 2025"
 date: "2025-09-08"
 excerpt: "From earthy terracottas to soft eucalyptus greens, discover the interior paint colours dominating Melbourne homes this year."
-coverImage: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1597826429203-55adfd2c0d81?w=1200&q=80"
 author: "Tom Bradley"
 category: "Colour Advice"
 ---

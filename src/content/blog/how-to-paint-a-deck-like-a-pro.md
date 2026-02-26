@@ -2,7 +2,7 @@
 title: "How to Paint and Restore Your Timber Deck Like a Pro"
 date: "2025-07-03"
 excerpt: "Melbourne's harsh weather is tough on timber decks. Here is how professionals restore and protect outdoor timber so it lasts."
-coverImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+coverImage: "https://plus.unsplash.com/premium_photo-1683129630753-a67cb44a9dab?w=1200&q=80"
 author: "Tom Bradley"
 category: "How-To"
 ---

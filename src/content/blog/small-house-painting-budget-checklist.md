@@ -2,7 +2,7 @@
 title: "Small Melbourne House Painting Budget Checklist"
 date: "2025-04-01"
 excerpt: "Planning a repaint for a unit or small house? Use this checklist to build a realistic painting budget in Melbourne."
-coverImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1563127673-00fb29e7eeae?w=1200&q=80"
 author: "Lisa Hammond"
 category: "Budgeting"
 ---

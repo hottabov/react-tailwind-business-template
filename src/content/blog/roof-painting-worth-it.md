@@ -2,7 +2,7 @@
 title: "Is Roof Painting Worth the Investment for Melbourne Homes?"
 date: "2025-08-14"
 excerpt: "Many homeowners overlook their roof when planning maintenance. Find out when roof painting makes financial sense and when you should consider other options."
-coverImage: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1632759145351-1d592919f522?w=1200&q=80"
 author: "Lisa Hammond"
 category: "Maintenance"
 ---

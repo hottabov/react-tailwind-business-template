@@ -2,7 +2,7 @@
 title: "How to Choose the Right Exterior Paint Colour for Your Melbourne Home"
 date: "2025-11-15"
 excerpt: "Choosing the wrong exterior colour is an expensive mistake. Follow this process to find a colour that suits your home's architecture, your street, and Melbourne's light."
-coverImage: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1525909002-1b05e0c869d8?w=1200&q=80"
 author: "Tom Bradley"
 category: "Colour Advice"
 ---

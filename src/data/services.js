@@ -5,11 +5,10 @@
 export const services = [
   {
     slug: 'interior-painting',
-    icon: '🏠',
     title: 'Interior Painting',
     tagline: 'Refresh Every Room',
-    heroImage: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1600&q=80',
-    thumbImage: 'https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1647996179012-66b87eba3d17?w=1600&q=80',
+    thumbImage: 'https://images.unsplash.com/photo-1647996179012-66b87eba3d17?w=800&q=80',
     summary:
       'Breathe new life into your living spaces with flawless interior painting. We use premium low-VOC paints and meticulous preparation for lasting results.',
     body: `Our interior painting service covers everything from a single accent wall to a full-house repaint.
@@ -31,7 +30,6 @@ We service all Melbourne suburbs including Richmond, St Kilda, Toorak, Fitzroy, 
   },
   {
     slug: 'exterior-painting',
-    icon: '🏡',
     title: 'Exterior Painting',
     tagline: 'Protect & Beautify',
     heroImage: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80',
@@ -57,11 +55,10 @@ We use Dulux Weathershield and similar high-performance coatings rated for Austr
   },
   {
     slug: 'commercial-painting',
-    icon: '🏢',
     title: 'Commercial Painting',
     tagline: 'Minimal Downtime, Maximum Impact',
-    heroImage: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&q=80',
-    thumbImage: 'https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=1600&q=80',
+    thumbImage: 'https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=800&q=80',
     summary:
       'We work around your business hours to deliver professional painting for offices, retail spaces, warehouses, and strata buildings — on time, on budget.',
     body: `Our commercial painting team has experience across retail fit-outs, office blocks, strata complexes, warehouses, and hospitality venues throughout Melbourne.
@@ -82,11 +79,10 @@ We partner with facility managers and property developers for ongoing maintenanc
   },
   {
     slug: 'roof-painting',
-    icon: '🔺',
     title: 'Roof Painting',
     tagline: "Extend Your Roof's Life",
-    heroImage: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1600&q=80',
-    thumbImage: 'https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=800&q=80',
+    heroImage: 'https://plus.unsplash.com/premium_photo-1683133229999-3c3fd3d4cd36?w=1600&q=80',
+    thumbImage: 'https://plus.unsplash.com/premium_photo-1683133229999-3c3fd3d4cd36?w=800&q=80',
     summary:
       "Restore and protect your roof with professional-grade coatings that improve insulation, prevent leaks, and dramatically improve your home's appearance.",
     body: `A freshly painted roof can add significant value to your property while extending the life of your roofing material by 10–15 years.
@@ -108,11 +104,10 @@ We paint concrete tiles, terracotta tiles, and Colorbond metal roofs. All roof p
   },
   {
     slug: 'fence-deck-painting',
-    icon: '🌿',
     title: 'Fence & Deck Painting',
     tagline: 'Outdoor Spaces, Perfected',
-    heroImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80',
-    thumbImage: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1530328881134-8c525cc57036?w=1600&q=80',
+    thumbImage: 'https://images.unsplash.com/photo-1530328881134-8c525cc57036?w=800&q=80',
     summary:
       'Revive tired timber or Colorbond fences and decks with professional preparation, staining, and sealing for outdoor surfaces that stay beautiful season after season.',
     body: `Timber fences and decks cop a beating from Melbourne's UV rays and wet winters. Our specialised outdoor timber treatments clean, repair, and protect your investment.
@@ -133,11 +128,10 @@ We use premium Cabot's and Feast Watson products for long-lasting protection.`,
   },
   {
     slug: 'colour-consultation',
-    icon: '🎨',
     title: 'Colour Consultation',
     tagline: 'Find Your Perfect Palette',
-    heroImage: 'https://images.unsplash.com/photo-1580922942689-62b93c2a8b53?w=1600&q=80',
-    thumbImage: 'https://images.unsplash.com/photo-1580922942689-62b93c2a8b53?w=800&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1581079289103-0544b7dfad66?w=1600&q=80',
+    thumbImage: 'https://images.unsplash.com/photo-1581079289103-0544b7dfad66?w=800&q=80',
     summary:
       'Not sure which colour to choose? Our colour consultants visit your home, assess natural light and furnishings, and create a personalised colour scheme just for you.',
     body: `Choosing the right colour is the most important decision in any painting project. Our consultation takes the guesswork out of it.

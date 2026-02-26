@@ -2,7 +2,7 @@
 title: "The Best Time of Year to Paint Your Home in Melbourne"
 date: "2025-05-12"
 excerpt: "Weather matters more than most people realise. Learn when Melbourne conditions are ideal for interior and exterior painting."
-coverImage: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1565285338283-a0f8dc29b7b1?w=1200&q=80"
 author: "Tom Bradley"
 category: "Planning"
 ---

@@ -2,9 +2,14 @@
  * SectionHeading — reusable decorated section title.
  * Shows an amber accent line above the heading.
  */
-export default function SectionHeading({ eyebrow, title, subtitle, center = false }) {
+export default function SectionHeading({
+  eyebrow,
+  title,
+  subtitle,
+  center = false,
+}) {
   return (
-    <div className={`mb-12 ${center ? 'text-center' : ''}`}>
+    <div className={`mb-12 ${center ? "text-center" : ""}`}>
       {eyebrow && (
         <span className="inline-block text-brand-500 font-semibold tracking-widest uppercase text-sm mb-3">
           {eyebrow}
@@ -14,8 +19,11 @@ export default function SectionHeading({ eyebrow, title, subtitle, center = fals
         {title}
       </h2>
       {subtitle && (
-        <p className="text-lg text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed
-          {center ? 'mx-auto' : ''}">
+        <p
+          className={`text-lg text-gray-500 dark:text-gray-400 max-w-2xl leading-relaxed ${
+            center ? "mx-auto" : ""
+          }`}
+        >
           {subtitle}
         </p>
       )}
