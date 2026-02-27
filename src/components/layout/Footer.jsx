@@ -162,7 +162,7 @@ export default function Footer() {
             target="_blank"
             className="text-gray-400 hover:text-brand-400 transition-colors"
           >
-            Leonov Design
+            🇺🇦 Leonov Design
           </a>
         </p>
       </div>
