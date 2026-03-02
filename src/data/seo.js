@@ -37,6 +37,20 @@ export const seoData = {
     keywords:
       'painting tips Melbourne, house colour guide, DIY painting advice, painting blog Melbourne',
   },
+  pricing: {
+    title: 'Painting Prices & Costs in Melbourne | Melbourne Pro Painters',
+    description:
+      'Wondering how much it costs to paint a house in Melbourne? View our transparent pricing guide for interior, exterior, and roof painting. Get a free same-day quote.',
+    keywords:
+      'painting prices Melbourne, cost to paint a house Melbourne, painters rates, interior painting cost, exterior painting cost Melbourne, affordable painters',
+  },
+    about: {
+    title: 'About Us | Our Story | Melbourne Pro Painters',
+    description:
+      'Learn about Melbourne Pro Painters. From our humble beginnings in Windsor to painting homes across all Melbourne suburbs. Discover our values and commitment to quality.',
+    keywords:
+      'about Melbourne Pro Painters, painters in Windsor, professional painting team Melbourne, our painting story, trusted painters Melbourne',
+  },
   contact: {
     title: 'Contact Us | Free Quote | Melbourne Pro Painters',
     description:

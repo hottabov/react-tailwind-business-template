@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, CheckCircle, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react";
 import SEO from "@/components/ui/SEO";
 import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -8,6 +8,7 @@ import { seoData } from "@/data/seo";
 import { services } from "@/data/services";
 import { reviews } from "@/data/reviews";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 // Assets
 import heroImage from "@/assets/images/hero/hero-main.avif";
@@ -24,12 +25,14 @@ const whyUs = [
 
 export default function HomePage() {
   const featuredReviews = reviews.slice(0, 3);
+  const recentPosts = useBlogPosts().slice(0, 3);
 
   // Setup scroll animations for different sections
   const [servicesRef, servicesVisible] = useScrollAnimation();
   const [whyUsTextRef, whyUsTextVisible] = useScrollAnimation();
   const [whyUsImgRef, whyUsImgVisible] = useScrollAnimation();
   const [reviewsRef, reviewsVisible] = useScrollAnimation();
+  const [blogRef, blogVisible] = useScrollAnimation();
 
   return (
     <>
@@ -299,6 +302,84 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 font-semibold transition-all text-brand-500 hover:gap-3"
             >
               Read All 12 Reviews <ArrowRight size={16} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LATEST FROM THE BLOG ──────────────────────────────────── */}
+      <section className="py-24 bg-white dark:bg-dark-bg" ref={blogRef}>
+        <div className="section-wrapper">
+          <div
+            className={`transition-all duration-700 transform ${
+              blogVisible
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-12"
+            }`}
+          >
+            <SectionHeading
+              eyebrow="Expert Advice"
+              title="Latest From Our Blog"
+              subtitle="Tips, trends, and guides from Melbourne's painting professionals to help you plan your next project."
+              center
+            />
+          </div>
+
+          <div className="grid gap-8 mb-12 md:grid-cols-3">
+            {recentPosts.map((post, i) => (
+              <Link
+                key={post.slug}
+                to={`/blog/${post.slug}`}
+                className={`group flex flex-col bg-white dark:bg-dark-card rounded-2xl overflow-hidden border border-gray-100 dark:border-dark-border shadow-sm hover:shadow-xl transition-all duration-500
+                  transform ${blogVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16"}`}
+                style={{ transitionDelay: `${200 + i * 150}ms` }}
+              >
+                <div className="relative h-56 overflow-hidden">
+                  <img
+                    src={post.frontmatter.coverImage}
+                    alt={post.frontmatter.title}
+                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 text-xs font-bold text-white rounded-full shadow-md bg-brand-500">
+                      {post.frontmatter.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex flex-col flex-grow p-6">
+                  <div className="flex items-center gap-2 mb-3 text-xs text-gray-400">
+                    <Calendar size={14} />
+                    {post.frontmatter.date}
+                  </div>
+
+                  <h3 className="mb-3 text-xl leading-tight text-gray-900 transition-colors font-display dark:text-white group-hover:text-brand-500">
+                    {post.frontmatter.title}
+                  </h3>
+
+                  <p className="flex-grow mb-5 text-sm text-gray-600 dark:text-gray-400 line-clamp-3">
+                    {post.frontmatter.excerpt}
+                  </p>
+
+                  <div className="mt-auto inline-flex items-center gap-1.5 text-brand-500 font-semibold text-sm group-hover:gap-2.5 transition-all">
+                    Continue reading <ArrowRight size={16} />
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div
+            className={`text-center transition-all duration-1000 delay-700 ${
+              blogVisible ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Link
+              to="/blog"
+              className="mt-8 inline-flex items-center gap-2 px-7 py-3.5 rounded-full
+              bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all hover:scale-105 shadow-lg shadow-brand-500/20"
+            >
+              View All Articles
             </Link>
           </div>
         </div>

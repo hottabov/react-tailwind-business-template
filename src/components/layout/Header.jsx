@@ -1,8 +1,3 @@
-/**
- * Header — sticky on scroll-up, transparent at top, solid on scroll.
- * Mobile hamburger with animated icon (CSS lines, no SVG lib needed).
- * Light/dark logo swap + ThemeToggle.
- */
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ChevronDown, Paintbrush } from "lucide-react";
@@ -10,7 +5,6 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 import useScrollUp from "@/hooks/useScrollUp";
 
 const navLinks = [
-  { label: "Home", href: "/" },
   {
     label: "Services",
     href: "/services",
@@ -23,21 +17,31 @@ const navLinks = [
       { label: "Colour Consultation", href: "/services/colour-consultation" },
     ],
   },
+  { label: "Pricing", href: "/pricing" },
   { label: "Portfolio", href: "/portfolio" },
-  { label: "Reviews", href: "/reviews" },
-  { label: "Blog", href: "/blog" },
+  {
+    label: "Company",
+    href: "#",
+    children: [
+      { label: "About Us", href: "/about" },
+      { label: "Reviews", href: "/reviews" },
+      { label: "Blog", href: "/blog" },
+    ],
+  },
   { label: "Contact", href: "/contact" },
 ];
 
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
+  const [companyOpen, setCompanyOpen] = useState(false);
   const { visible, atTop } = useScrollUp();
   const location = useLocation();
 
-  // Close mobile menu on route change
   useEffect(() => {
     setMobileOpen(false);
+    setServicesOpen(false);
+    setCompanyOpen(false);
   }, [location]);
 
   const headerCls = `
@@ -53,25 +57,20 @@ export default function Header() {
 
   return (
     <header className={headerCls}>
-      <div className="section-wrapper flex items-center justify-between">
-        {/* ── Logo ── */}
+      <div className="flex items-center justify-between section-wrapper">
         <Link to="/" className="flex items-center gap-2">
-          {/* Icon */}
-          <div className="w-10 h-10 rounded-xl bg-brand-500 flex items-center justify-center shadow-lg shadow-brand-500/30">
+          <div className="flex items-center justify-center w-10 h-10 shadow-lg rounded-xl bg-brand-500 shadow-brand-500/30">
             <Paintbrush size={22} className="text-white" />
           </div>
-
-          {/* Text */}
           <span
             className={`font-display font-bold text-2xl transition-colors duration-300
-    ${atTop ? "text-white" : "text-gray-900 dark:text-white"}`}
+            ${atTop ? "text-white" : "text-gray-900 dark:text-white"}`}
           >
             Melbourne<span className="text-brand-500">Pro</span>Painters
           </span>
         </Link>
 
-        {/* ── Desktop nav ── */}
-        <nav className="hidden lg:flex items-center gap-1">
+        <nav className="items-center hidden gap-1 lg:flex">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label} className="relative group">
@@ -87,26 +86,15 @@ export default function Header() {
                   {link.label}
                   <ChevronDown
                     size={15}
-                    className="group-hover:rotate-180 transition-transform duration-200"
+                    className="transition-transform duration-200 group-hover:rotate-180"
                   />
                 </button>
-                {/* Dropdown */}
-                <div
-                  className="
-                  absolute top-full left-0 mt-1 w-56
-                  bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-dark-border
-                  opacity-0 invisible group-hover:opacity-100 group-hover:visible
-                  translate-y-2 group-hover:translate-y-0
-                  transition-all duration-200
-                "
-                >
+                <div className="absolute left-0 invisible w-56 mt-1 transition-all duration-200 translate-y-2 bg-white border border-gray-100 shadow-xl opacity-0 top-full dark:bg-dark-card rounded-2xl dark:border-dark-border group-hover:opacity-100 group-hover:visible group-hover:translate-y-0">
                   {link.children.map((child) => (
                     <NavLink
                       key={child.href}
                       to={child.href}
-                      className="block px-5 py-3 text-base text-gray-700 dark:text-gray-200
-                        hover:text-brand-500 hover:bg-brand-50 dark:hover:bg-dark-bg
-                        first:rounded-t-2xl last:rounded-b-2xl transition-colors duration-150"
+                      className="block px-5 py-3 text-base text-gray-700 transition-colors duration-150 dark:text-gray-200 hover:text-brand-500 hover:bg-brand-50 dark:hover:bg-dark-bg first:rounded-t-2xl last:rounded-b-2xl"
                     >
                       {child.label}
                     </NavLink>
@@ -144,10 +132,8 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* ── Mobile: theme + hamburger ── */}
-        <div className="flex lg:hidden items-center gap-3">
+        <div className="flex items-center gap-3 lg:hidden">
           <ThemeToggle />
-          {/* Animated hamburger button */}
           <button
             onClick={() => setMobileOpen((o) => !o)}
             aria-label="Toggle mobile menu"
@@ -173,31 +159,40 @@ export default function Header() {
         </div>
       </div>
 
-      {/* ── Mobile menu drawer ── */}
       <div
         className={`lg:hidden overflow-hidden transition-all duration-300
         ${mobileOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <nav
-          className="bg-white dark:bg-dark-card border-t border-gray-100 dark:border-dark-border
-          shadow-xl px-4 py-4 flex flex-col gap-1"
-        >
+        <nav className="flex flex-col gap-1 px-4 py-4 bg-white border-t border-gray-100 shadow-xl dark:bg-dark-card dark:border-dark-border overflow-y-auto max-h-[80vh]">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label}>
                 <button
-                  onClick={() => setServicesOpen((o) => !o)}
-                  className="w-full flex items-center justify-between px-4 py-3 rounded-xl
-                    text-gray-800 dark:text-gray-200 font-medium hover:bg-brand-50 dark:hover:bg-dark-bg"
+                  onClick={() => {
+                    if (link.label === "Services") {
+                      setServicesOpen(!servicesOpen);
+                      setCompanyOpen(false);
+                    } else if (link.label === "Company") {
+                      setCompanyOpen(!companyOpen);
+                      setServicesOpen(false);
+                    }
+                  }}
+                  className="flex items-center justify-between w-full px-4 py-3 font-medium text-gray-800 rounded-xl dark:text-gray-200 hover:bg-brand-50 dark:hover:bg-dark-bg"
                 >
                   {link.label}
                   <ChevronDown
                     size={16}
-                    className={`transition-transform ${servicesOpen ? "rotate-180" : ""}`}
+                    className={`transition-transform ${
+                      (link.label === "Services" && servicesOpen) ||
+                      (link.label === "Company" && companyOpen)
+                        ? "rotate-180"
+                        : ""
+                    }`}
                   />
                 </button>
-                {servicesOpen && (
-                  <div className="pl-4 flex flex-col gap-1 mt-1">
+                {((link.label === "Services" && servicesOpen) ||
+                  (link.label === "Company" && companyOpen)) && (
+                  <div className="flex flex-col gap-1 pl-4 mt-1">
                     {link.children.map((child) => (
                       <NavLink
                         key={child.href}
@@ -230,8 +225,7 @@ export default function Header() {
           )}
           <Link
             to="/contact"
-            className="mt-3 w-full py-3 rounded-full bg-brand-500 text-white font-bold
-              text-center hover:bg-brand-600 transition-colors"
+            className="w-full py-3 mt-3 font-bold text-center text-white transition-colors rounded-full bg-brand-500 hover:bg-brand-600"
           >
             Get a Free Quote
           </Link>

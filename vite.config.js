@@ -16,6 +16,7 @@ export default defineConfig({
       scss: {
         // Global variables / mixins can be injected here if needed
         additionalData: `@use "@/styles/variables" as *;`,
+        api: 'modern-compiler', 
       },
     },
   },
