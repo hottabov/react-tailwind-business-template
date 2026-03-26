@@ -5,6 +5,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@mixin generate-theme($hue, $sat, $brand-hue, $brand-sat) {
+  --color-white: #{$hue} #{$sat} 99%;
+  
+  --color-gray-50:  #{$hue} #{$sat} 97%;
+  --color-gray-100: #{$hue} #{$sat} 94%;
+  --color-gray-200: #{$hue} #{$sat} 88%;
+  --color-gray-300: #{$hue} #{$sat} 78%;
+  --color-gray-400: #{$hue} #{$sat} 62%;
+  --color-gray-500: #{$hue} #{$sat + 5%} 50%;
+  --color-gray-600: #{$hue} #{$sat + 5%} 40%;
+  --color-gray-700: #{$hue} #{$sat + 10%} 30%;
+  --color-gray-800: #{$hue} #{$sat + 5%} 18%;
+  --color-gray-900: #{$hue} #{$sat} 12%;
+  --color-gray-950: #{$hue} #{$sat + 10%} 8%;
+
+  --color-brand-50:  #{$brand-hue} #{$brand-sat} 96%;
+  --color-brand-100: #{$brand-hue} #{$brand-sat} 90%;
+  --color-brand-200: #{$brand-hue} #{$brand-sat} 80%;
+  --color-brand-300: #{$brand-hue} #{$brand-sat} 70%;
+  --color-brand-400: #{$brand-hue} #{$brand-sat} 60%;
+  --color-brand-500: #{$brand-hue} #{$brand-sat} 49%;
+  --color-brand-600: #{$brand-hue} #{$brand-sat} 40%;
+  --color-brand-700: #{$brand-hue} #{$brand-sat} 32%;
+  --color-brand-800: #{$brand-hue} #{$brand-sat} 24%;
+  --color-brand-900: #{$brand-hue} #{$brand-sat} 16%;
+  --color-brand-950: #{$brand-hue} #{$brand-sat} 10%;
+
+  --color-dark-bg:     #{$hue} #{$sat + 10%} 7%;
+  --color-dark-card:   #{$hue} #{$sat + 5%} 11%;
+  --color-dark-border: #{$hue} #{$sat} 16%;
+}
+
+@layer base {
+  // 1. Premium Gold (Default)
+  // Contrast: Warm Gold (35) against Cool Slate Blue (220)
+  html, html[data-theme='default'] {
+    @include generate-theme(220, 15%, 35, 92%);
+  }
+
+  // 2. Royal Forest
+  // Contrast: Emerald Green (145) against Deep Crisp Iron-Grey (210)
+  html[data-theme='forest'] {
+    @include generate-theme(210, 8%, 145, 55%);
+  }
+
+  // 3. Deep Ocean
+  // Contrast: Vibrant Azure (205) against Rich Midnight Navy (225)
+  html[data-theme='ocean'] {
+    @include generate-theme(225, 20%, 205, 85%);
+  }
+
+  // 4. Terracotta Rust
+  // Contrast: Earthy Rust (15) against Warm Mocha-Grey (30)
+  html[data-theme='rust'] {
+    @include generate-theme(30, 12%, 15, 75%);
+  }
+}
+
 // ─── Google Font import fallback (Vite also loads via index.html) ─────────────
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
@@ -35,13 +93,7 @@ body {
 
 // ─── Utility: section wrapper ─────────────────────────────────────────────────
 .section-wrapper {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-// ─── Utility: gradient text ───────────────────────────────────────────────────
-.gradient-text {
-  @apply bg-clip-text text-transparent;
-  background-image: linear-gradient(135deg, $brand-primary 0%, $brand-dark 100%);
+  @apply max-w-[80rem] mx-auto px-4 sm:px-6 lg:px-8;
 }
 
 // ─── Animations (additional non-Tailwind) ────────────────────────────────────

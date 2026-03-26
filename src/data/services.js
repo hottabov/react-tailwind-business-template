@@ -9,7 +9,7 @@ export const services = [
     tagline: 'Refresh Every Room',
     heroImage: 'https://images.unsplash.com/photo-1647996179012-66b87eba3d17?w=1600&q=80',
     thumbImage: 'https://images.unsplash.com/photo-1647996179012-66b87eba3d17?w=800&q=80',
-    contentImage: 'https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=800&q=80',
+    contentImage: 'https://plus.unsplash.com/premium_photo-1681566678219-46eccfe221bb?w=800&q=80',
     summary:
       'Breathe new life into your living spaces with flawless interior painting. We use premium low-VOC paints and meticulous preparation for lasting results.',
 
@@ -59,7 +59,7 @@ export const services = [
     tagline: 'Protect & Beautify',
     heroImage: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1600&q=80',
     thumbImage: 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&q=80',
-    contentImage: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81?w=800&q=80',
+    contentImage: 'https://images.unsplash.com/photo-1657346088167-b982455bf29a?q=80&w=987?w=800&q=80',
     summary:
       "Shield your home from Melbourne's harsh weather while boosting kerb appeal. Our exterior specialists prepare, prime, and paint for a finish that lasts.",
 
@@ -109,7 +109,7 @@ export const services = [
     tagline: 'Minimal Downtime, Maximum Impact',
     heroImage: 'https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=1600&q=80',
     thumbImage: 'https://images.unsplash.com/photo-1688372199140-cade7ae820fe?w=800&q=80',
-    contentImage: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80',
+    contentImage: 'https://images.unsplash.com/photo-1765279077848-d7691010f1e0?w=800&q=80',
     summary:
       'We work around your business hours to deliver professional painting for offices, retail spaces, warehouses, and strata buildings — on time, on budget.',
 
@@ -159,7 +159,7 @@ export const services = [
     tagline: "Extend Your Roof's Life",
     heroImage: 'https://plus.unsplash.com/premium_photo-1683133229999-3c3fd3d4cd36?w=1600&q=80',
     thumbImage: 'https://plus.unsplash.com/premium_photo-1683133229999-3c3fd3d4cd36?w=800&q=80',
-    contentImage: 'https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=800&q=80',
+    contentImage: 'https://images.unsplash.com/photo-1722876720000-f39b65b7d4a1?w=800&q=80',
     summary:
       "Restore and protect your roof with professional-grade coatings that improve insulation, prevent leaks, and dramatically improve your home's appearance.",
 

@@ -176,7 +176,7 @@ export default function BlogPostPage() {
                       className="flex items-center gap-3 rounded-xl p-2 hover:bg-brand-50 dark:hover:bg-dark-bg transition-colors group"
                     >
                       <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-700">
-                        <img
+                        <img loading="lazy"
                           src={sp.frontmatter.coverImage}
                           alt={sp.frontmatter.title}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"

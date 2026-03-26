@@ -69,7 +69,7 @@ export default function ServiceDetailPage() {
             {/* Image Side - Stretching to full height of parent */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl group w-full h-full min-h-[400px]">
               <div className="absolute inset-0 bg-brand-500/10 group-hover:bg-brand-500/0 transition-colors duration-500 z-10 pointer-events-none" />
-              <img 
+              <img loading="lazy"
                 src={service.contentImage || service.thumbImage} 
                 alt={`${service.title} - The clear solution`}
                 className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
@@ -197,7 +197,7 @@ export default function ServiceDetailPage() {
                   "{review.text}"
                 </p>
                 <div className="flex items-center gap-4 mt-6 pt-5 border-t border-gray-200 dark:border-dark-border">
-                  <img
+                  <img loading="lazy"
                     src={review.avatar}
                     alt={review.name}
                     className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500/30"

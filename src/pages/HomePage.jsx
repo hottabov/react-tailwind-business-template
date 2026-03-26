@@ -4,6 +4,7 @@ import SEO from "@/components/ui/SEO";
 import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StarRating from "@/components/ui/StarRating";
+import BrushStroke from "@/components/ui/BrushStroke";
 import { seoData } from "@/data/seo";
 import { services } from "@/data/services";
 import { reviews } from "@/data/reviews";
@@ -63,7 +64,10 @@ export default function HomePage() {
           <h1 className="mb-6 text-5xl leading-tight font-display md:text-6xl lg:text-7xl animate-fade-up">
             Transform Your Home
             <br />
-            <span className="gradient-text">Inside & Out</span>
+            <span className="relative inline-block">
+              <span className="relative z-10 text-brand-500">Inside & Out</span>
+              <BrushStroke variant={1} className="text-brand-500/80 -bottom-2 -rotate-2" />
+            </span>
           </h1>
 
           <p
@@ -148,7 +152,7 @@ export default function HomePage() {
                 style={{ transitionDelay: `${i * 100}ms` }} // Staggered delay based on index
               >
                 <div className="relative overflow-hidden h-52">
-                  <img
+                  <img loading="lazy"
                     src={s.thumbImage}
                     alt={s.title}
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
@@ -221,7 +225,7 @@ export default function HomePage() {
                 : "opacity-0 translate-x-12"
             }`}
           >
-            <img
+            <img loading="lazy"
               src={whyUsImage}
               alt="The results of a professional house painting job in Melbourne, showing a before and after comparison"
               className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]"
@@ -277,7 +281,7 @@ export default function HomePage() {
                   "{r.text}"
                 </p>
                 <div className="flex items-center gap-3 mt-5">
-                  <img
+                  <img loading="lazy"
                     src={r.avatar}
                     alt={r.name}
                     className="object-cover w-10 h-10 rounded-full"
@@ -335,7 +339,7 @@ export default function HomePage() {
                 style={{ transitionDelay: `${200 + i * 150}ms` }}
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img
+                  <img loading="lazy"
                     src={post.frontmatter.coverImage}
                     alt={post.frontmatter.title}
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"

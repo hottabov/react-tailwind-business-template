@@ -70,7 +70,7 @@ export default function PortfolioPage() {
                 to={`/portfolio/${item.slug}`}
                 className="group relative rounded-2xl overflow-hidden aspect-[4/3] shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
               >
-                <img
+                <img loading="lazy"
                   src={item.frontmatter.coverImage}
                   alt={item.frontmatter.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"

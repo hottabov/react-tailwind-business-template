@@ -103,7 +103,7 @@ export default function AboutPage() {
                 : "opacity-0 translate-x-12"
             }`}
           >
-            <img
+            <img loading="lazy"
               src={pic2}
               alt="Painter standing in front of a freshly painted wall, representing the early days of Melbourne Pro Painters in Windsor"
               className="object-cover w-full shadow-2xl rounded-3xl aspect-square"
@@ -124,7 +124,7 @@ export default function AboutPage() {
                 : "opacity-0 -translate-x-12"
             }`}
           >
-            <img
+            <img loading="lazy"
               src={pic3}
               alt="Commercial painting project"
               className="object-cover w-full shadow-2xl rounded-3xl aspect-[4/3]"

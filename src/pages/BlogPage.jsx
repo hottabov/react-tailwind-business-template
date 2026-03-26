@@ -36,7 +36,7 @@ export default function BlogPage() {
                 style={{ animationDelay: `${i * 0.05}s` }}
               >
                 <div className="relative h-52 overflow-hidden">
-                  <img
+                  <img loading="lazy"
                     src={post.frontmatter.coverImage}
                     alt={post.frontmatter.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

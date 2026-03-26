@@ -31,7 +31,7 @@ export default function ServicesPage() {
               <div key={s.slug} className="group flex flex-col bg-gray-50 dark:bg-dark-card rounded-3xl
                 overflow-hidden border border-gray-100 dark:border-dark-border hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                 <div className="relative h-56 overflow-hidden">
-                  <img src={s.thumbImage} alt={s.title}
+                  <img loading="lazy" src={s.thumbImage} alt={s.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                   <span className="absolute top-4 left-4 text-4xl bg-white/20 backdrop-blur-sm

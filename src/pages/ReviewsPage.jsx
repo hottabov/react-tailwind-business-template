@@ -40,7 +40,7 @@ export default function ReviewsPage() {
                   "{r.text}"
                 </p>
                 <div className="flex items-center gap-4 mt-6 pt-5 border-t border-gray-200 dark:border-dark-border">
-                  <img
+                  <img loading="lazy"
                     src={r.avatar}
                     alt={r.name}
                     className="w-12 h-12 rounded-full object-cover ring-2 ring-brand-500/30"

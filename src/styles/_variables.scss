@@ -1,7 +1,7 @@
 // Brand colour tokens used throughout custom SCSS
 // These mirror the Tailwind config so both systems stay in sync
-$brand-primary:   #ee8f0e;
-$brand-dark:      #af4f09;
+$brand-primary:   hsl(var(--color-brand-500) / 1);
+$brand-dark:      hsl(var(--color-brand-700) / 1);
 $text-light:      #1f2937;
 $text-dark:       #f3f4f6;
 $bg-light:        #ffffff;

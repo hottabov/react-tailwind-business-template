@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  // Enable class-based dark mode so we can toggle via a class on <html>
   darkMode: 'class',
   content: [
     './index.html',
@@ -8,34 +7,46 @@ export default {
   ],
   theme: {
     extend: {
-      // Brand colour palette
       colors: {
+        white: 'hsl(var(--color-white) / <alpha-value>)',
+        gray: {
+          50:  'hsl(var(--color-gray-50) / <alpha-value>)',
+          100: 'hsl(var(--color-gray-100) / <alpha-value>)',
+          200: 'hsl(var(--color-gray-200) / <alpha-value>)',
+          300: 'hsl(var(--color-gray-300) / <alpha-value>)',
+          400: 'hsl(var(--color-gray-400) / <alpha-value>)',
+          500: 'hsl(var(--color-gray-500) / <alpha-value>)',
+          600: 'hsl(var(--color-gray-600) / <alpha-value>)',
+          700: 'hsl(var(--color-gray-700) / <alpha-value>)',
+          800: 'hsl(var(--color-gray-800) / <alpha-value>)',
+          900: 'hsl(var(--color-gray-900) / <alpha-value>)',
+          950: 'hsl(var(--color-gray-950) / <alpha-value>)',
+        },
         brand: {
-          50:  '#fef9ee',
-          100: '#fdf0d0',
-          200: '#f9dd9d',
-          300: '#f6c45f',
-          400: '#f2a928',
-          500: '#ee8f0e',  // primary accent — warm amber/gold
-          600: '#d36e08',
-          700: '#af4f09',
-          800: '#8d3e0e',
-          900: '#74340f',
-          950: '#401806',
+          50:  'hsl(var(--color-brand-50) / <alpha-value>)',
+          100: 'hsl(var(--color-brand-100) / <alpha-value>)',
+          200: 'hsl(var(--color-brand-200) / <alpha-value>)',
+          300: 'hsl(var(--color-brand-300) / <alpha-value>)',
+          400: 'hsl(var(--color-brand-400) / <alpha-value>)',
+          500: 'hsl(var(--color-brand-500) / <alpha-value>)',
+          600: 'hsl(var(--color-brand-600) / <alpha-value>)',
+          700: 'hsl(var(--color-brand-700) / <alpha-value>)',
+          800: 'hsl(var(--color-brand-800) / <alpha-value>)',
+          900: 'hsl(var(--color-brand-900) / <alpha-value>)',
+          950: 'hsl(var(--color-brand-950) / <alpha-value>)',
         },
         dark: {
-          bg:   '#0f1117',
-          card: '#1a1d27',
-          border: '#2a2d3a',
+          bg:     'hsl(var(--color-dark-bg) / <alpha-value>)',
+          card:   'hsl(var(--color-dark-card) / <alpha-value>)',
+          border: 'hsl(var(--color-dark-border) / <alpha-value>)',
         },
       },
-      // Larger base font sizes to exceed Tailwind defaults
       fontSize: {
-        base:  ['1.0625rem', { lineHeight: '1.75' }],  // 17px
-        lg:    ['1.1875rem', { lineHeight: '1.75' }],  // 19px
-        xl:    ['1.3125rem', { lineHeight: '1.75' }],  // 21px
-        '2xl': ['1.5625rem', { lineHeight: '1.4'  }],  // 25px
-        '3xl': ['1.875rem',  { lineHeight: '1.3'  }],  // 30px
+        base:  ['1.0625rem', { lineHeight: '1.75' }],
+        lg:    ['1.1875rem', { lineHeight: '1.75' }],
+        xl:    ['1.3125rem', { lineHeight: '1.75' }],
+        '2xl': ['1.5625rem', { lineHeight: '1.4'  }],
+        '3xl': ['1.875rem',  { lineHeight: '1.3'  }],
         '4xl': ['2.375rem',  { lineHeight: '1.2'  }],
         '5xl': ['3rem',      { lineHeight: '1.15' }],
         '6xl': ['3.75rem',   { lineHeight: '1.1'  }],
@@ -45,7 +56,6 @@ export default {
         sans:    ['Inter', 'ui-sans-serif', 'system-ui'],
         display: ['"DM Serif Display"', 'Georgia', 'serif'],
       },
-      // Keyframe animations used across the site
       keyframes: {
         'fade-up': {
           '0%':   { opacity: '0', transform: 'translateY(24px)' },
