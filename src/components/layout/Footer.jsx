@@ -14,6 +14,24 @@ const socialLinks = [
   { icon: Youtube, href: "https://youtube.com", label: "YouTube" },
 ];
 
+const quickLinks = [
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Blog", href: "/blog" },
+  { label: "Contact", href: "/contact" },
+];
+
+const serviceLinks = [
+  { label: "Interior Painting", href: "/services/interior-painting" },
+  { label: "Exterior Painting", href: "/services/exterior-painting" },
+  { label: "Commercial Painting", href: "/services/commercial-painting" },
+  { label: "Roof Painting", href: "/services/roof-painting" },
+  { label: "Fence & Deck", href: "/services/fence-deck-painting" },
+  { label: "Colour Consultation", href: "/services/colour-consultation" },
+];
+
 export default function Footer() {
   return (
     <footer className="bg-gray-900 dark:bg-dark-bg text-gray-300 pt-16 pb-8">
@@ -48,33 +66,16 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-semibold text-lg mb-5">Quick Links</h3>
           <ul className="space-y-2">
-            {[
-              "/",
-              "/services",
-              "/portfolio",
-              "/reviews",
-              "/blog",
-              "/contact",
-            ].map((href, i) => {
-              const labels = [
-                "Home",
-                "Services",
-                "Portfolio",
-                "Reviews",
-                "Blog",
-                "Contact",
-              ];
-              return (
-                <li key={href}>
-                  <Link
-                    to={href}
-                    className="text-gray-400 hover:text-brand-400 transition-colors duration-200 text-sm"
-                  >
-                    {labels[i]}
-                  </Link>
-                </li>
-              );
-            })}
+            {quickLinks.map(({ label, href }) => (
+              <li key={href}>
+                <Link
+                  to={href}
+                  className="text-gray-400 hover:text-brand-400 transition-colors duration-200 text-sm"
+                >
+                  {label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -82,17 +83,10 @@ export default function Footer() {
         <div>
           <h3 className="text-white font-semibold text-lg mb-5">Services</h3>
           <ul className="space-y-2">
-            {[
-              ["Interior Painting", "interior-painting"],
-              ["Exterior Painting", "exterior-painting"],
-              ["Commercial Painting", "commercial-painting"],
-              ["Roof Painting", "roof-painting"],
-              ["Fence & Deck", "fence-deck-painting"],
-              ["Colour Consultation", "colour-consultation"],
-            ].map(([label, slug]) => (
-              <li key={slug}>
+            {serviceLinks.map(({ label, href }) => (
+              <li key={href}>
                 <Link
-                  to={`/services/${slug}`}
+                  to={href}
                   className="text-gray-400 hover:text-brand-400 transition-colors duration-200 text-sm"
                 >
                   {label}
