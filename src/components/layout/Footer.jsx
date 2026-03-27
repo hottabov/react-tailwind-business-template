@@ -7,6 +7,7 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
+import logoImg from "@/assets/images/logo.avif";
 
 const socialLinks = [
   { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
@@ -38,9 +39,9 @@ export default function Footer() {
       <div className="section-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
         {/* Brand column */}
         <div>
-          <span className="font-display text-2xl font-bold text-white">
-            Melbourne<span className="text-brand-500">Pro</span>Painters
-          </span>
+          <Link to="/" className="inline-block mb-1">
+            <img src={logoImg} alt="Melbourne Pro Painters Logo" className="h-10 md:h-12 w-auto" />
+          </Link>
           <p className="mt-4 text-sm leading-relaxed text-gray-400">
             Melbourne's most trusted interior and exterior painters. Premium
             results, transparent pricing, guaranteed workmanship.

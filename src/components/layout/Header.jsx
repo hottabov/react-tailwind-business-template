@@ -3,6 +3,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { ChevronDown, Paintbrush } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import useScrollUp from "@/hooks/useScrollUp";
+import logoImg from "@/assets/images/logo.avif";
 
 const navLinks = [
   {
@@ -59,15 +60,11 @@ export default function Header() {
     <header className={headerCls}>
       <div className="flex items-center justify-between section-wrapper">
         <Link to="/" className="flex items-center gap-2">
-          <div className="flex items-center justify-center w-10 h-10 shadow-lg rounded-xl bg-brand-500 shadow-brand-500/30">
-            <Paintbrush size={22} className="text-white" />
-          </div>
-          <span
-            className={`font-display font-bold text-2xl transition-colors duration-300
-            ${atTop ? "text-white" : "text-gray-900 dark:text-white"}`}
-          >
-            Melbourne<span className="text-brand-500">Pro</span>Painters
-          </span>
+          <img 
+            src={logoImg} 
+            alt="Melbourne Pro Painters Logo" 
+            className="h-10 md:h-12 w-auto transition-transform hover:scale-105 duration-300" 
+          />
         </Link>
 
         <nav className="items-center hidden gap-1 lg:flex">

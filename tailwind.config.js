@@ -54,7 +54,7 @@ export default {
       },
       fontFamily: {
         sans:    ['Inter', 'ui-sans-serif', 'system-ui'],
-        display: ['"DM Serif Display"', 'Georgia', 'serif'],
+        display: ['"Courgette"', 'cursive'],
       },
       keyframes: {
         'fade-up': {

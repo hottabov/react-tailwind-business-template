@@ -10,7 +10,8 @@
 // Grab all .md files under src/content/blog/
 const modules = import.meta.glob('../content/blog/*.md', {
   eager: true,
-  as: 'raw',          // import raw string (no transform)
+  query: '?raw',
+  import: 'default',
 });
 
 /**

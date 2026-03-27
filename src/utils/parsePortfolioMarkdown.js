@@ -2,7 +2,8 @@
 
 const modules = import.meta.glob('../content/portfolio/*.md', {
   eager: true,
-  as: 'raw',
+  query: '?raw',
+  import: 'default',
 });
 
 function parseFrontmatter(raw) {
