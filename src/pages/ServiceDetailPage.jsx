@@ -4,6 +4,7 @@ import SEO from "@/components/ui/SEO";
 import CTA from "@/components/ui/CTA";
 import StarRating from "@/components/ui/StarRating";
 import { services } from "@/data/services";
+import { siteConfig } from "@/data/site";
 
 export default function ServiceDetailPage() {
   const { slug } = useParams();
@@ -27,6 +28,26 @@ export default function ServiceDetailPage() {
         description={service.seoDescription}
         keywords={service.seoKeywords}
         image={service.heroImage}
+        schema={{
+          "@type": "Service",
+          name: `${service.title} Melbourne`,
+          serviceType: service.title,
+          description: service.seoDescription,
+          areaServed: {
+            "@type": "City",
+            name: "Melbourne",
+          },
+          provider: {
+            "@type": "HousePainter",
+            name: siteConfig.name,
+            telephone: siteConfig.phone,
+          },
+          offers: {
+            "@type": "Offer",
+            priceCurrency: "AUD",
+            availability: "https://schema.org/InStock",
+          },
+        }}
       />
 
       {/* Hero */}

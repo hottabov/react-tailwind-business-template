@@ -1,4 +1,5 @@
-import { CheckCircle, Info, Home, Ruler, Clock, Droplet } from "lucide-react";
+import { Link } from "react-router-dom";
+import { CheckCircle, Info, Home, Ruler, Clock, Droplet, ArrowRight } from "lucide-react";
 import SEO from "@/components/ui/SEO";
 import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -11,6 +12,7 @@ const pricingPackages = [
     price: "From $450",
     description:
       "Perfect for a quick refresh of a bedroom, study, or living space.",
+    idealFor: "Bedrooms, studies, rentals and quick refresh jobs",
     features: [
       "Walls & ceiling (2 coats)",
       "1 door, frame & skirting boards",
@@ -18,6 +20,7 @@ const pricingPackages = [
       "Premium Dulux low-VOC paint",
       "Floor and furniture protection",
     ],
+    buttonText: "Request a Room Quote",
   },
   {
     title: "Interior (3-Bed House)",
@@ -25,6 +28,7 @@ const pricingPackages = [
     isPopular: true,
     description:
       "Full interior repaint for a standard single-storey Melbourne home.",
+    idealFor: "Owner-occupiers, pre-sale repaints and full-home refreshes",
     features: [
       "3 bedrooms, 1 living, kitchen & bath",
       "All ceilings, walls, doors & trims",
@@ -32,12 +36,14 @@ const pricingPackages = [
       "Stain blocking where required",
       "Post-painting professional clean",
     ],
+    buttonText: "Quote My Interior Repaint",
   },
   {
     title: "Exterior (Single Storey)",
     price: "From $5,000",
     description:
       "Boost kerb appeal and protect your home from Melbourne's weather.",
+    idealFor: "Weatherboard homes, facades and full exterior protection work",
     features: [
       "Full high-pressure chemical wash",
       "Scraping & sanding flaking paint",
@@ -45,6 +51,50 @@ const pricingPackages = [
       "Premium Weather-shield coatings",
       "Gutters, fascias & eaves included",
     ],
+    buttonText: "Quote My Exterior Project",
+  },
+];
+
+const quoteBenefits = [
+  "Fixed written quote with clear inclusions",
+  "Preparation scope explained before you book",
+  "Paint system recommendations for your job",
+  "Warranty details included in writing",
+];
+
+const quoteSteps = [
+  {
+    title: "Tell us the scope",
+    description:
+      "Share the property type, suburb, surfaces and timing so we can size the job properly.",
+  },
+  {
+    title: "We review access and prep",
+    description:
+      "We confirm measurements, access, current condition and any preparation that affects price.",
+  },
+  {
+    title: "You get a clear quote",
+    description:
+      "We send a written quote with inclusions, recommended coatings and the next steps to book.",
+  },
+];
+
+const pricingFaqs = [
+  {
+    question: "Can you give a quote from photos?",
+    answer:
+      "For some smaller jobs, yes. For larger interiors, exteriors and roof work, a site visit gives the most accurate fixed quote.",
+  },
+  {
+    question: "Are these fixed prices?",
+    answer:
+      "These are guide prices based on common Melbourne jobs. Your final quote depends on measurements, preparation, access and the paint system required.",
+  },
+  {
+    question: "How quickly can I get my quote?",
+    answer:
+      "Most quote requests receive a response the same business day, and written quotes are typically sent within 24 hours of inspection.",
   },
 ];
 
@@ -78,10 +128,21 @@ const pricingFactors = [
 export default function PricingPage() {
   const [cardsRef, cardsVisible] = useScrollAnimation({ threshold: 0.1 });
   const [factorsRef, factorsVisible] = useScrollAnimation({ threshold: 0.2 });
+  const faqSchema = {
+    "@type": "FAQPage",
+    mainEntity: pricingFaqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
 
   return (
     <>
-      <SEO {...seoData.pricing} />
+      <SEO {...seoData.pricing} schema={faqSchema} />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="pt-32 pb-20 text-center text-white bg-gray-900">
@@ -132,6 +193,9 @@ export default function PricingPage() {
                 <p className="h-10 mb-6 text-sm text-gray-500 dark:text-gray-400">
                   {pkg.description}
                 </p>
+                <p className="mb-6 text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 dark:text-gray-500">
+                  Best for {pkg.idealFor}
+                </p>
 
                 <div className="pb-6 mb-6 border-b border-gray-100 dark:border-dark-border">
                   <span className="text-4xl text-gray-900 font-display dark:text-white">
@@ -156,6 +220,17 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
+
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-brand-500/20"
+                >
+                  {pkg.buttonText}
+                  <ArrowRight size={16} />
+                </Link>
+                <p className="mt-3 text-xs text-center text-gray-400 dark:text-gray-500">
+                  Clear scope, written inclusions and no-obligation advice.
+                </p>
               </div>
             ))}
           </div>
@@ -170,6 +245,62 @@ export default function PricingPage() {
               professional painters generally charge between $15 to $30 per sqm
               of wall space, depending on prep work and paint quality.
             </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white dark:bg-dark-card">
+        <div className="section-wrapper">
+          <SectionHeading
+            eyebrow="Quote Clarity"
+            title="What You Should Expect in Your Quote"
+            subtitle="Clear pricing builds trust. We explain what is included, what preparation is required, and what happens next before you book."
+            center
+          />
+
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {quoteBenefits.map((item) => (
+              <div
+                key={item}
+                className="rounded-3xl border border-gray-100 dark:border-dark-border bg-gray-50 dark:bg-dark-bg p-6 shadow-sm"
+              >
+                <CheckCircle className="text-brand-500 mb-4" size={24} />
+                <p className="text-base font-semibold text-gray-900 dark:text-white">
+                  {item}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 rounded-[2rem] bg-gray-900 text-white p-8 md:p-10 lg:p-12">
+            <div className="max-w-3xl">
+              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-300 mb-3">
+                Fast Quote Journey
+              </span>
+              <h2 className="text-3xl md:text-4xl font-display mb-4">
+                How Fast Quoting Works
+              </h2>
+              <p className="text-white/70 text-lg">
+                From first message to written quote, we keep the process simple, clear and low-stress.
+              </p>
+            </div>
+
+            <div className="grid gap-6 mt-10 md:grid-cols-3">
+              {quoteSteps.map((step, index) => (
+                <div
+                  key={step.title}
+                  className="rounded-3xl bg-white/5 border border-white/10 p-6"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-brand-500 text-white font-display text-xl font-bold flex items-center justify-center mb-5">
+                    {index + 1}
+                  </div>
+                  <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
+                  <p className="text-white/70 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -209,11 +340,39 @@ export default function PricingPage() {
         </div>
       </section>
 
+      <section className="py-24 bg-gray-50 dark:bg-dark-bg">
+        <div className="section-wrapper">
+          <SectionHeading
+            eyebrow="Common Questions"
+            title="What People Ask Before They Enquire"
+            subtitle="These are the questions homeowners and businesses usually ask before booking a painter."
+            center
+          />
+
+          <div className="grid gap-6 md:grid-cols-3">
+            {pricingFaqs.map((faq) => (
+              <div
+                key={faq.question}
+                className="rounded-3xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border p-7 shadow-sm"
+              >
+                <h3 className="text-xl font-display text-gray-900 dark:text-white mb-4">
+                  {faq.question}
+                </h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CTA (Same-Day Quote specific) ─────────────────────────── */}
       <CTA
         title="Get Your Exact Price Today"
         subtitle="No guessing. We'll visit your property, assess the required preparation, and provide a fixed, itemised quote on the same day."
         buttonText="Request Same-Day Quote"
+        supportingText="Written quotes usually sent within 24 hrs"
       />
     </>
   );

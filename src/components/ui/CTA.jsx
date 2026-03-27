@@ -7,6 +7,7 @@ export default function CTA({
   subtitle = "Join hundreds of happy Melbourne homeowners. Get your free, no-obligation quote today.",
   buttonText = "Get a Free Quote",
   buttonLink = "/contact",
+  supportingText = "Most quotes sent within 24 hrs",
 }) {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 });
 
@@ -61,7 +62,7 @@ export default function CTA({
                 </Link>
 
                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  Takes less than 2 mins
+                  {supportingText}
                 </span>
               </div>
             </div>
@@ -95,6 +96,7 @@ export default function CTA({
               <a
                 href="https://customerreviews.google.com/"
                 target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm font-medium text-gray-500 dark:text-gray-400"
               >
                 See Google Reviews

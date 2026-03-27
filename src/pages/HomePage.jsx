@@ -24,6 +24,13 @@ const whyUs = [
   "Clean & tidy – every single day",
 ];
 
+const heroProof = [
+  "Quotes Within 24 Hours",
+  "15+ Years Experience",
+  "Clean & Tidy Crews",
+  "Workmanship Warranty Included",
+];
+
 export default function HomePage() {
   const featuredReviews = reviews.slice(0, 3);
   const recentPosts = useBlogPosts().slice(0, 3);
@@ -58,14 +65,14 @@ export default function HomePage() {
             className="inline-block px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/40
             text-brand-300 text-sm font-semibold tracking-wider uppercase mb-6 animate-fade-in"
           >
-            ⭐ Melbourne's #1 Rated Painters
+            Licensed, Insured & Warranty-Backed
           </span>
 
           <h1 className="mb-6 text-5xl leading-tight font-display md:text-6xl lg:text-7xl animate-fade-up">
-            Transform Your Home
+            Melbourne Painters
             <br />
             <span className="relative inline-block">
-              <span className="relative z-10 text-brand-500">Inside & Out</span>
+              <span className="relative z-10 text-brand-500">Who Show Up</span>
               <BrushStroke variant={1} className="text-brand-500/80 -bottom-2 -rotate-2" />
             </span>
           </h1>
@@ -74,8 +81,9 @@ export default function HomePage() {
             className="max-w-2xl mx-auto mb-10 text-xl md:text-2xl text-white/80 animate-fade-up"
             style={{ animationDelay: "0.1s", animationFillMode: "backwards" }}
           >
-            Premium interior and exterior painting for Melbourne homes and
-            businesses. Free quotes, guaranteed quality.
+            Interior, exterior and commercial painting for Melbourne homes and
+            businesses. Fixed written quotes within 24 hours, careful
+            preparation, and clean workmanship backed by a written warranty.
           </p>
 
           <div
@@ -103,12 +111,7 @@ export default function HomePage() {
             className="flex flex-wrap justify-center gap-6 text-sm mt-14 text-white/60 animate-fade-in"
             style={{ animationDelay: "0.4s", animationFillMode: "backwards" }}
           >
-            {[
-              "500+ Projects Completed",
-              "15+ Years Experience",
-              "5-Star Google Rating",
-              "Same-Day Quotes",
-            ].map((b) => (
+            {heroProof.map((b) => (
               <span key={b} className="flex items-center gap-2">
                 <CheckCircle size={15} className="text-brand-400" /> {b}
               </span>

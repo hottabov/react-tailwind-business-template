@@ -2,24 +2,23 @@
 
 export const seoData = {
   home: {
-    title: 'Melbourne Pro Painters | Interior & Exterior House Painters Melbourne',
+    title: 'Melbourne Pro Painters | Painters for Homes & Businesses in Melbourne',
     description:
-      "Transform your home with Melbourne's most trusted house painters. " +
-      'Premium interior & exterior painting across Melbourne. Free quotes, 5-star results. Call (03) 9123 4567.',
+      "Interior, exterior and commercial painting for Melbourne homes and businesses.  within 24 hours, premium preparation, and warranty-backed workmanship.",
     keywords:
       'house painters Melbourne, interior painters Melbourne, exterior painters Melbourne, residential painting Melbourne, commercial painters Melbourne',
   },
   services: {
     title: 'Painting Services Melbourne | Melbourne Pro Painters',
     description:
-      'Full range of professional painting services: interior, exterior, commercial, roof, fence & deck painting across Melbourne. Quality guaranteed.',
+      'Professional painting services across Melbourne, including interior, exterior, commercial, roof, fence and deck projects. Clear quotes and quality workmanship.',
     keywords:
       'painting services Melbourne, interior painting, exterior painting, commercial painting, roof painting Melbourne, fence painting, deck staining',
   },
   portfolio: {
     title: 'Painting Portfolio Melbourne | Recent Projects | Melbourne Pro Painters',
     description:
-      'Browse our gallery of recent interior and exterior painting projects across Melbourne. See real results from our professional painting team.',
+      'Browse recent painting projects across Melbourne and see the finish, scope and style we deliver for homes and businesses.',
     keywords:
       'painting portfolio Melbourne, house painting gallery Melbourne, painting before and after',
   },
@@ -40,7 +39,7 @@ export const seoData = {
   pricing: {
     title: 'Painting Prices & Costs in Melbourne | Melbourne Pro Painters',
     description:
-      'Wondering how much it costs to paint a house in Melbourne? View our transparent pricing guide for interior, exterior, and roof painting. Get a free same-day quote.',
+      'See typical painting prices in Melbourne, what drives the final cost, and how to get a fixed written quote for your property.',
     keywords:
       'painting prices Melbourne, cost to paint a house Melbourne, painters rates, interior painting cost, exterior painting cost Melbourne, affordable painters',
   },
@@ -54,7 +53,7 @@ export const seoData = {
   contact: {
     title: 'Contact Us | Free Quote | Melbourne Pro Painters',
     description:
-      'Get a free painting quote in Melbourne. Call (03) 9123 4567 or fill in our contact form. We service all Melbourne suburbs.',
+      'Request a painting quote in Melbourne for interior, exterior, roof or commercial work. Fast replies, clear next steps, and no-obligation advice.',
     keywords:
       'contact painters Melbourne, painting quote Melbourne, free painting estimate Melbourne',
   },

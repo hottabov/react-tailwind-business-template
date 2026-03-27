@@ -99,6 +99,7 @@ export default function BlogPostPage() {
   }
 
   const { frontmatter, content } = post;
+  const publishedTime = new Date(frontmatter.date).toISOString();
 
   // Останні 8 статей для сайдбару (без поточної)
   const sidebarPosts = allPosts
@@ -111,6 +112,22 @@ export default function BlogPostPage() {
         title={`${frontmatter.title} | Melbourne Pro Painters Blog`}
         description={frontmatter.excerpt}
         image={frontmatter.coverImage}
+        type="article"
+        publishedTime={publishedTime}
+        modifiedTime={publishedTime}
+        schema={{
+          "@type": "BlogPosting",
+          headline: frontmatter.title,
+          description: frontmatter.excerpt,
+          datePublished: publishedTime,
+          dateModified: publishedTime,
+          articleSection: frontmatter.category,
+          author: {
+            "@type": "Person",
+            name: frontmatter.author,
+          },
+          image: [frontmatter.coverImage],
+        }}
       />
 
       {/* Hero */}

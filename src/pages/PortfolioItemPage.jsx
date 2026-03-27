@@ -4,6 +4,15 @@ import SEO from '@/components/ui/SEO';
 import CTA from '@/components/ui/CTA';
 import { usePortfolioItem, usePortfolioItems } from '@/hooks/usePortfolioItems';
 
+const projectFit = {
+  Interior: 'Feature rooms, full-home refreshes and pre-sale interiors',
+  Exterior: 'Weatherboards, facades and full exterior repaints',
+  Roof: 'Tile and Colorbond roof restoration projects',
+  Deck: 'Outdoor timber restoration and oiling',
+  Fence: 'Fence repainting and outdoor refresh work',
+  Commercial: 'Offices, retail spaces and business repaint projects',
+};
+
 function Markdown({ text }) {
   const lines = text.trim().split('\n');
   const els = [];
@@ -107,6 +116,17 @@ export default function PortfolioItemPage() {
         title={`${frontmatter.title} | Painting Portfolio | Melbourne Pro Painters`}
         description={frontmatter.excerpt}
         image={frontmatter.coverImage}
+        schema={{
+          "@type": "CreativeWork",
+          name: frontmatter.title,
+          description: frontmatter.excerpt,
+          image: [frontmatter.coverImage],
+          genre: frontmatter.category,
+          contentLocation: {
+            "@type": "Place",
+            name: frontmatter.location,
+          },
+        }}
       />
 
       {/* Hero */}
@@ -154,6 +174,55 @@ export default function PortfolioItemPage() {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 italic border-l-4 border-brand-500 pl-5 leading-relaxed">
               {frontmatter.excerpt}
             </p>
+
+            <div className="grid gap-4 mb-8 md:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
+              <div className="rounded-[2rem] bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border p-6 md:p-7">
+                <h2 className="text-2xl font-display text-gray-900 dark:text-white mb-5">
+                  Project Snapshot
+                </h2>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
+                      Category
+                    </div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">
+                      {frontmatter.category}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
+                      Location
+                    </div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">
+                      {frontmatter.location}
+                    </div>
+                  </div>
+                  <div>
+                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
+                      Best Fit
+                    </div>
+                    <div className="text-base font-semibold text-gray-900 dark:text-white">
+                      {projectFit[frontmatter.category] || 'Homes and businesses needing a high-quality repaint'}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="rounded-[2rem] bg-gray-900 text-white p-6 md:p-7">
+                <h2 className="text-2xl font-display mb-3">
+                  Want a Similar Result?
+                </h2>
+                <p className="text-white/70 leading-relaxed mb-6">
+                  Tell us what you are painting and we will help you map the right scope, finish and next-step quote.
+                </p>
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center justify-center w-full px-5 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-colors"
+                >
+                  Request a Similar Quote
+                </Link>
+              </div>
+            </div>
 
             {/* Before / After якщо є */}
             {(frontmatter.beforeImage || frontmatter.afterImage) && (
@@ -241,7 +310,11 @@ export default function PortfolioItemPage() {
         </div>
       </section>
 
-      <CTA title="Ready for a Transformation Like This?" subtitle="Book a free inspection and quote anywhere in Melbourne." />
+      <CTA
+        title="Ready for a Transformation Like This?"
+        subtitle="Book a free inspection and quote anywhere in Melbourne."
+        supportingText="Fast response and clear next steps"
+      />
     </>
   );
 }
