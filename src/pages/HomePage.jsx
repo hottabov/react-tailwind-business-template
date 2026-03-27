@@ -72,8 +72,13 @@ export default function HomePage() {
             Melbourne Painters
             <br />
             <span className="relative inline-block">
-              <span className="relative z-10 text-brand-500">Who Show Up</span>
-              <BrushStroke variant={1} className="text-brand-500/80 -bottom-2 -rotate-2" />
+              <span className="relative z-10 text-brand-500">
+                Quick, Clean Results
+              </span>
+              <BrushStroke
+                variant={1}
+                className="text-brand-500/80 -bottom-8 -rotate-2"
+              />
             </span>
           </h1>
 
@@ -155,7 +160,8 @@ export default function HomePage() {
                 style={{ transitionDelay: `${i * 100}ms` }} // Staggered delay based on index
               >
                 <div className="relative overflow-hidden h-52">
-                  <img loading="lazy"
+                  <img
+                    loading="lazy"
                     src={s.thumbImage}
                     alt={s.title}
                     className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
@@ -228,7 +234,8 @@ export default function HomePage() {
                 : "opacity-0 translate-x-12"
             }`}
           >
-            <img loading="lazy"
+            <img
+              loading="lazy"
               src={whyUsImage}
               alt="The results of a professional house painting job in Melbourne, showing a before and after comparison"
               className="rounded-3xl shadow-2xl w-full object-cover aspect-[4/3]"
@@ -284,7 +291,8 @@ export default function HomePage() {
                   "{r.text}"
                 </p>
                 <div className="flex items-center gap-3 mt-5">
-                  <img loading="lazy"
+                  <img
+                    loading="lazy"
                     src={r.avatar}
                     alt={r.name}
                     className="object-cover w-10 h-10 rounded-full"
@@ -342,7 +350,8 @@ export default function HomePage() {
                 style={{ transitionDelay: `${200 + i * 150}ms` }}
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img loading="lazy"
+                  <img
+                    loading="lazy"
                     src={post.frontmatter.coverImage}
                     alt={post.frontmatter.title}
                     className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-105"
