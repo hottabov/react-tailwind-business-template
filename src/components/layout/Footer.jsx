@@ -113,7 +113,7 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:hello@melbournepropainters.com.au"
+                href="mailto:hello@propainterscompany.com.au"
                 className="flex items-start gap-3 text-gray-400 hover:text-brand-400 transition-colors"
               >
                 <Mail
@@ -121,7 +121,7 @@ export default function Footer() {
                   className="text-brand-500 flex-shrink-0 mt-0.5"
                 />
                 <span className="text-sm break-all">
-                  hello@melbournepropainters.com.au
+                  hello@propainterscompany.com.au
                 </span>
               </a>
             </li>

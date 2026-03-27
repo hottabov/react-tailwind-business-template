@@ -312,8 +312,8 @@ export default function ContactPage() {
               {
                 icon: Mail,
                 label: "Email",
-                value: "hello@melbournepropainters.com.au",
-                href: "mailto:hello@melbournepropainters.com.au",
+                value: "hello@propainterscompany.com.au",
+                href: "mailto:hello@propainterscompany.com.au",
                 sub: "We reply within a few hours",
               },
               {

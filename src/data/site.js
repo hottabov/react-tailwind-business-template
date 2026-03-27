@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "Melbourne Pro Painters",
-  url: "https://melbournepropainters.com.au",
+  url: "https://propainterscompany.com.au",
   locale: "en_AU",
   language: "en-AU",
   defaultTitle: "Melbourne Pro Painters | Interior, Exterior & Commercial Painters",
@@ -10,7 +10,7 @@ export const siteConfig = {
     "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80",
   phone: "+61 3 9123 4567",
   displayPhone: "(03) 9123 4567",
-  email: "hello@melbournepropainters.com.au",
+  email: "hello@propainterscompany.com.au",
   priceRange: "$$",
   address: {
     streetAddress: "Melbourne VIC",
