@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { ChevronDown, Paintbrush } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
+import { useTheme } from "@/context/ThemeContext";
 import useScrollUp from "@/hooks/useScrollUp";
-import logoImg from "@/assets/images/logo.avif";
+import logoDark from "@/assets/images/logo-dark.avif";
+import logoLight from "@/assets/images/logo-light.avif";
 
 const navLinks = [
   {
@@ -36,7 +38,9 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [isSystemDark, setIsSystemDark] = useState(false);
   const { visible, atTop } = useScrollUp();
+  const { theme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -44,6 +48,19 @@ export default function Header() {
     setServicesOpen(false);
     setCompanyOpen(false);
   }, [location]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const syncTheme = () => setIsSystemDark(mediaQuery.matches);
+
+    syncTheme();
+    mediaQuery.addEventListener("change", syncTheme);
+
+    return () => mediaQuery.removeEventListener("change", syncTheme);
+  }, []);
+
+  const isDarkTheme = theme === "dark" || (theme === "system" && isSystemDark);
+  const logoSrc = atTop || isDarkTheme ? logoLight : logoDark;
 
   const headerCls = `
     fixed top-0 left-0 right-0 z-50
@@ -61,7 +78,7 @@ export default function Header() {
       <div className="flex items-center justify-between section-wrapper">
         <Link to="/" className="flex items-center gap-2">
           <img 
-            src={logoImg} 
+            src={logoSrc} 
             alt="Melbourne Pro Painters Logo" 
             className="h-10 md:h-12 w-auto transition-transform hover:scale-105 duration-300" 
           />

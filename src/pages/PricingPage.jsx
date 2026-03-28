@@ -1,5 +1,13 @@
 import { Link } from "react-router-dom";
-import { CheckCircle, Info, Home, Ruler, Clock, Droplet, ArrowRight } from "lucide-react";
+import {
+  CheckCircle,
+  Info,
+  Home,
+  Ruler,
+  Clock,
+  Droplet,
+  ArrowRight,
+} from "lucide-react";
 import SEO from "@/components/ui/SEO";
 import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -223,7 +231,7 @@ export default function PricingPage() {
 
                 <Link
                   to="/contact"
-                  className="inline-flex items-center justify-center w-full gap-2 px-5 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-brand-500/20"
+                  className="inline-flex items-center justify-center w-full gap-2 px-5 py-3 font-semibold text-white transition-all duration-300 rounded-full bg-brand-500 hover:bg-brand-600 hover:shadow-lg hover:shadow-brand-500/20"
                 >
                   {pkg.buttonText}
                   <ArrowRight size={16} />
@@ -262,9 +270,9 @@ export default function PricingPage() {
             {quoteBenefits.map((item) => (
               <div
                 key={item}
-                className="rounded-3xl border border-gray-100 dark:border-dark-border bg-gray-50 dark:bg-dark-bg p-6 shadow-sm"
+                className="p-6 border border-gray-100 shadow-sm rounded-3xl dark:border-dark-border bg-gray-50 dark:bg-dark-bg"
               >
-                <CheckCircle className="text-brand-500 mb-4" size={24} />
+                <CheckCircle className="mb-4 text-brand-500" size={24} />
                 <p className="text-base font-semibold text-gray-900 dark:text-white">
                   {item}
                 </p>
@@ -274,14 +282,15 @@ export default function PricingPage() {
 
           <div className="mt-12 rounded-[2rem] bg-gray-900 text-white p-8 md:p-10 lg:p-12">
             <div className="max-w-3xl">
-              <span className="inline-block text-sm font-semibold tracking-widest uppercase text-brand-300 mb-3">
+              <span className="inline-block mb-3 text-sm font-semibold tracking-widest uppercase text-brand-300">
                 Fast Quote Journey
               </span>
-              <h2 className="text-3xl md:text-4xl font-display mb-4">
+              <h2 className="mb-4 text-3xl md:text-4xl font-display">
                 How Fast Quoting Works
               </h2>
-              <p className="text-white/70 text-lg">
-                From first message to written quote, we keep the process simple, clear and low-stress.
+              <p className="text-lg text-white/70">
+                From first message to written quote, we keep the process simple,
+                clear and low-stress.
               </p>
             </div>
 
@@ -289,13 +298,13 @@ export default function PricingPage() {
               {quoteSteps.map((step, index) => (
                 <div
                   key={step.title}
-                  className="rounded-3xl bg-white/5 border border-white/10 p-6"
+                  className="p-6 border rounded-3xl bg-white/5 border-white/10"
                 >
-                  <div className="w-12 h-12 rounded-2xl bg-brand-500 text-white font-display text-xl font-bold flex items-center justify-center mb-5">
+                  <div className="flex items-center justify-center w-12 h-12 mb-5 text-xl font-bold text-white rounded-2xl bg-brand-500 font-display">
                     {index + 1}
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{step.title}</h3>
-                  <p className="text-white/70 leading-relaxed">
+                  <h3 className="mb-3 text-xl font-semibold">{step.title}</h3>
+                  <p className="leading-relaxed text-white/70">
                     {step.description}
                   </p>
                 </div>
@@ -353,12 +362,12 @@ export default function PricingPage() {
             {pricingFaqs.map((faq) => (
               <div
                 key={faq.question}
-                className="rounded-3xl bg-white dark:bg-dark-card border border-gray-100 dark:border-dark-border p-7 shadow-sm"
+                className="bg-white border border-gray-100 shadow-sm rounded-3xl dark:bg-dark-card dark:border-dark-border p-7"
               >
-                <h3 className="text-xl font-display text-gray-900 dark:text-white mb-4">
+                <h3 className="mb-4 text-xl text-gray-900 font-display dark:text-white">
                   {faq.question}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
+                <p className="leading-relaxed text-gray-600 dark:text-gray-400">
                   {faq.answer}
                 </p>
               </div>
@@ -372,7 +381,7 @@ export default function PricingPage() {
         title="Get Your Exact Price Today"
         subtitle="No guessing. We'll visit your property, assess the required preparation, and provide a fixed, itemised quote on the same day."
         buttonText="Request Same-Day Quote"
-        supportingText="Written quotes usually sent within 24 hrs"
+        supportingText="Sent within 24 hrs"
       />
     </>
   );

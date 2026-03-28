@@ -7,7 +7,7 @@ import {
   Instagram,
   Youtube,
 } from "lucide-react";
-import logoImg from "@/assets/images/logo.avif";
+import logoImg from "@/assets/images/logo-light.avif";
 
 const socialLinks = [
   { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
