@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle, Phone, Calendar } from "lucide-react";
 import SEO from "@/components/ui/SEO";
@@ -34,8 +35,11 @@ const heroProof = [
 ];
 
 export default function HomePage() {
-  const featuredReviews = reviews.slice(0, 3);
-  const recentPosts = useBlogPosts().slice(0, 3);
+  const blogPosts = useBlogPosts();
+  const featuredReviews = useMemo(() => reviews.slice(0, 3), []);
+  const recentPosts = useMemo(() => blogPosts.slice(0, 3), [blogPosts]);
+  const [isMobileHero, setIsMobileHero] = useState(false);
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Setup scroll animations for different sections
   const [servicesRef, servicesVisible] = useScrollAnimation();
@@ -44,38 +48,72 @@ export default function HomePage() {
   const [reviewsRef, reviewsVisible] = useScrollAnimation();
   const [blogRef, blogVisible] = useScrollAnimation();
 
+  useEffect(() => {
+    if (typeof window === "undefined") return undefined;
+
+    const mobileQuery = window.matchMedia("(max-width: 767px)");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const syncPreferences = () => {
+      setIsMobileHero(mobileQuery.matches);
+      setPrefersReducedMotion(motionQuery.matches);
+    };
+
+    syncPreferences();
+
+    if (mobileQuery.addEventListener && motionQuery.addEventListener) {
+      mobileQuery.addEventListener("change", syncPreferences);
+      motionQuery.addEventListener("change", syncPreferences);
+    } else {
+      mobileQuery.addListener(syncPreferences);
+      motionQuery.addListener(syncPreferences);
+    }
+
+    return () => {
+      if (mobileQuery.removeEventListener && motionQuery.removeEventListener) {
+        mobileQuery.removeEventListener("change", syncPreferences);
+        motionQuery.removeEventListener("change", syncPreferences);
+      } else {
+        mobileQuery.removeListener(syncPreferences);
+        motionQuery.removeListener(syncPreferences);
+      }
+    };
+  }, []);
+
   return (
     <>
-      <SEO {...seoData.home} />
+      <SEO {...seoData.home} preloadImage={heroImage} />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative flex items-center justify-center min-h-screen overflow-hidden">
         {/* Background video */}
         <div className="absolute inset-0">
-          <video
-            className="hidden object-cover w-full h-full md:block"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={heroImage}
-            aria-hidden="true"
-          >
-            <source src={heroVideo} type="video/mp4" />
-          </video>
-          <video
-            className="block object-cover w-full h-full md:hidden"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            poster={heroImage}
-            aria-hidden="true"
-          >
-            <source src={heroVideoMobile} type="video/mp4" />
-          </video>
+          {prefersReducedMotion ? (
+            <img
+              src={heroImage}
+              alt=""
+              aria-hidden="true"
+              className="object-cover w-full h-full"
+              fetchPriority="high"
+            />
+          ) : (
+            <video
+              key={isMobileHero ? "mobile-hero-video" : "desktop-hero-video"}
+              className="object-cover w-full h-full"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster={heroImage}
+              aria-hidden="true"
+            >
+              <source
+                src={isMobileHero ? heroVideoMobile : heroVideo}
+                type="video/mp4"
+              />
+            </video>
+          )}
           <div className="absolute inset-0 hero-overlay" />
         </div>
 
@@ -104,8 +142,7 @@ export default function HomePage() {
           </h1>
 
           <p
-            className="max-w-2xl mx-auto mb-10 text-xl md:text-2xl text-white/80 animate-fade-up"
-            style={{ animationDelay: "0.1s", animationFillMode: "backwards" }}
+            className="max-w-2xl mx-auto mb-10 text-xl md:text-2xl text-white/80 animate-fade-up [animation-delay:100ms] [animation-fill-mode:backwards]"
           >
             Interior, exterior and commercial painting for Melbourne homes and
             businesses. Fixed written quotes within 24 hours, careful
@@ -113,8 +150,7 @@ export default function HomePage() {
           </p>
 
           <div
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start animate-fade-up"
-            style={{ animationDelay: "0.2s", animationFillMode: "backwards" }}
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start animate-fade-up [animation-delay:200ms] [animation-fill-mode:backwards]"
           >
             <Link
               to="/contact"
@@ -134,8 +170,7 @@ export default function HomePage() {
 
           {/* Trust badges */}
           <div
-            className="flex flex-wrap justify-center gap-6 text-sm mt-14 text-white/60 animate-fade-in"
-            style={{ animationDelay: "0.4s", animationFillMode: "backwards" }}
+            className="flex flex-wrap justify-center gap-6 text-sm mt-14 text-white/60 animate-fade-in [animation-delay:400ms] [animation-fill-mode:backwards]"
           >
             {heroProof.map((b) => (
               <span key={b} className="flex items-center gap-2">
@@ -224,7 +259,7 @@ export default function HomePage() {
               subtitle="We don't just paint walls. We transform spaces — and we back every project with our workmanship guarantee."
             />
             <ul className="space-y-4">
-              {whyUs.map((item, index) => (
+              {whyUs.map((item) => (
                 <li
                   key={item}
                   className="flex items-center gap-3 text-gray-700 dark:text-gray-300"

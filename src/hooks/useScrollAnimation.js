@@ -8,6 +8,11 @@ import { useEffect, useRef, useState } from 'react';
 export function useScrollAnimation(options = { threshold: 0.1, triggerOnce: true }) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
+  const {
+    threshold = 0.1,
+    triggerOnce = true,
+    rootMargin = '0px',
+  } = options;
 
   useEffect(() => {
     const element = ref.current;
@@ -17,21 +22,21 @@ export function useScrollAnimation(options = { threshold: 0.1, triggerOnce: true
       if (entry.isIntersecting) {
         setIsVisible(true);
         // If we only want it to animate once, unobserve after it becomes visible
-        if (options.triggerOnce) {
+        if (triggerOnce) {
           observer.unobserve(element);
         }
-      } else if (!options.triggerOnce) {
+      } else if (!triggerOnce) {
         // Optional: fade out when scrolling away (usually not recommended for performance)
         setIsVisible(false);
       }
-    }, options);
+    }, { threshold, rootMargin });
 
     observer.observe(element);
 
     return () => {
       if (element) observer.unobserve(element);
     };
-  }, [ref, options.threshold, options.triggerOnce]);
+  }, [rootMargin, threshold, triggerOnce]);
 
   return [ref, isVisible];
 }

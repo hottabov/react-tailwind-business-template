@@ -7,7 +7,7 @@ export default function CTA({
   subtitle = "Join hundreds of happy Melbourne homeowners. Get your free, no-obligation quote today.",
   buttonText = "Get a Free Quote",
   buttonLink = "/contact",
-  supportingText = "Most quotes sent within 24 hrs",
+  supportingText = "within 24 hrs",
 }) {
   const [ref, isVisible] = useScrollAnimation({ threshold: 0.2 });
 
@@ -71,7 +71,8 @@ export default function CTA({
             <div className="flex flex-col items-center justify-center pt-8 border-t border-gray-100 lg:col-span-5 lg:border-t-0 lg:border-l dark:border-dark-border lg:pt-0 lg:pl-8">
               <div className="flex mb-4 -space-x-3">
                 {[47, 12, 45, 15, 49].map((imgId, i) => (
-                  <img loading="lazy"
+                  <img
+                    loading="lazy"
                     key={imgId}
                     src={`https://i.pravatar.cc/150?img=${imgId}`}
                     alt="Customer avatar"

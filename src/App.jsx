@@ -37,7 +37,6 @@ export default function App() {
             <Route path="/reviews" element={<ReviewsPage />} />
             <Route path="/blog" element={<BlogPage />} />
             <Route path="/blog/:slug" element={<BlogPostPage />} />
-            <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/portfolio/:slug" element={<PortfolioItemPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />

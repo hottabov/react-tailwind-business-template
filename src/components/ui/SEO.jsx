@@ -22,6 +22,7 @@ export default function SEO({
   description,
   keywords,
   image,
+  preloadImage,
   imageAlt,
   canonicalPath,
   type = "website",
@@ -35,6 +36,7 @@ export default function SEO({
   const pageTitle = title || siteConfig.defaultTitle;
   const pageDescription = description || siteConfig.defaultDescription;
   const pageImage = toAbsoluteUrl(image || siteConfig.defaultImage);
+  const preloadImageUrl = preloadImage ? toAbsoluteUrl(preloadImage) : null;
   const pageImageAlt = imageAlt || pageTitle;
   const canonicalUrl = toAbsoluteUrl(canonicalPath || pathname || "/");
   const pageType = type === "article" ? "article" : "website";
@@ -153,6 +155,9 @@ export default function SEO({
       <meta name="robots" content={robots} />
       <meta name="theme-color" content="#f97316" />
       <link rel="canonical" href={canonicalUrl} />
+      {preloadImageUrl && (
+        <link rel="preload" as="image" href={preloadImageUrl} />
+      )}
 
       <meta property="og:locale" content={siteConfig.locale} />
       <meta property="og:type" content={pageType} />
