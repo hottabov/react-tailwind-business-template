@@ -113,7 +113,7 @@ export default function HomePage() {
           </p>
 
           <div
-            className="flex flex-col justify-center gap-4 sm:flex-row animate-fade-up"
+            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start animate-fade-up"
             style={{ animationDelay: "0.2s", animationFillMode: "backwards" }}
           >
             <Link

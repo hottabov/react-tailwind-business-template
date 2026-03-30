@@ -35,12 +35,16 @@ const serviceLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 dark:bg-dark-bg text-gray-300 pt-16 pb-8">
-      <div className="section-wrapper grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+    <footer className="pt-16 pb-8 text-gray-300 bg-gray-900 dark:bg-dark-bg">
+      <div className="grid grid-cols-1 gap-10 mb-12 section-wrapper md:grid-cols-2 lg:grid-cols-4">
         {/* Brand column */}
         <div>
           <Link to="/" className="inline-block mb-1">
-            <img src={logoImg} alt="Melbourne Pro Painters Logo" className="h-10 md:h-12 w-auto" />
+            <img
+              src={logoImg}
+              alt="Melbourne Pro Painters Logo"
+              className="w-auto h-10 md:h-12"
+            />
           </Link>
           <p className="mt-4 text-sm leading-relaxed text-gray-400">
             Melbourne's most trusted interior and exterior painters. Premium
@@ -54,8 +58,7 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-brand-500 dark:hover:bg-brand-600
-                  flex items-center justify-center transition-all duration-300 hover:scale-110"
+                className="flex items-center justify-center w-10 h-10 transition-all duration-300 bg-gray-800 rounded-full hover:bg-brand-500 dark:hover:bg-brand-600 hover:scale-110"
               >
                 <Icon size={17} className="text-gray-300 hover:text-white" />
               </a>
@@ -65,13 +68,13 @@ export default function Footer() {
 
         {/* Quick links */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-5">Quick Links</h3>
+          <h3 className="mb-5 text-lg font-semibold text-white">Quick Links</h3>
           <ul className="space-y-2">
             {quickLinks.map(({ label, href }) => (
               <li key={href}>
                 <Link
                   to={href}
-                  className="text-gray-400 hover:text-brand-400 transition-colors duration-200 text-sm"
+                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-brand-400"
                 >
                   {label}
                 </Link>
@@ -82,13 +85,13 @@ export default function Footer() {
 
         {/* Services */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-5">Services</h3>
+          <h3 className="mb-5 text-lg font-semibold text-white">Services</h3>
           <ul className="space-y-2">
             {serviceLinks.map(({ label, href }) => (
               <li key={href}>
                 <Link
                   to={href}
-                  className="text-gray-400 hover:text-brand-400 transition-colors duration-200 text-sm"
+                  className="text-sm text-gray-400 transition-colors duration-200 hover:text-brand-400"
                 >
                   {label}
                 </Link>
@@ -99,22 +102,21 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="text-white font-semibold text-lg mb-5">Contact Us</h3>
+          <h3 className="mb-5 text-lg font-semibold text-white">Contact Us</h3>
           <ul className="space-y-4">
             <li>
               <a
                 href="tel:0391234567"
-                className="flex items-center gap-3 text-gray-400
-                hover:text-brand-400 transition-colors group"
+                className="flex items-center gap-3 text-gray-400 transition-colors hover:text-brand-400 group"
               >
-                <Phone size={16} className="text-brand-500 flex-shrink-0" />
+                <Phone size={16} className="flex-shrink-0 text-brand-500" />
                 <span className="text-sm">(03) 9123 4567</span>
               </a>
             </li>
             <li>
               <a
                 href="mailto:hello@propainterscompany.com.au"
-                className="flex items-start gap-3 text-gray-400 hover:text-brand-400 transition-colors"
+                className="flex items-start gap-3 text-gray-400 transition-colors hover:text-brand-400"
               >
                 <Mail
                   size={16}
@@ -141,10 +143,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      <div
-        className="section-wrapper border-t border-gray-800 pt-6 flex flex-col sm:flex-row
-        items-center justify-between gap-3 text-xs text-gray-500"
-      >
+      <div className="flex flex-col justify-between gap-3 pt-6 text-xs text-gray-500 border-t border-gray-800 section-wrapper sm:flex-row">
         <p>
           © {new Date().getFullYear()} Melbourne Pro Painters. All rights
           reserved.
@@ -155,7 +154,7 @@ export default function Footer() {
           <a
             href="https://leonovdesign.com"
             target="_blank"
-            className="text-gray-400 hover:text-brand-400 transition-colors"
+            className="text-gray-400 transition-colors hover:text-brand-400"
           >
             🇺🇦 Leonov Design
           </a>
