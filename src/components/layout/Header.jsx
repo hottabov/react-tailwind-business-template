@@ -85,10 +85,10 @@ export default function Header() {
     <header className={headerCls}>
       <div className="flex items-center justify-between section-wrapper">
         <Link to="/" className="flex items-center gap-2 shrink-0 min-w-fit">
-          <img 
-            src={logoSrc} 
-            alt="Melbourne Pro Painters Logo" 
-            className="h-10 w-auto transition-transform duration-300 shrink-0 hover:scale-105 md:h-12" 
+          <img
+            src={logoSrc}
+            alt="Melbourne Pro Painters Logo"
+            className="w-auto h-10 transition-transform duration-300 shrink-0 hover:scale-105 md:h-12"
           />
         </Link>
 
@@ -127,7 +127,9 @@ export default function Header() {
               <NavLink
                 key={link.href}
                 to={link.href}
-                className={({ isActive }) => `rounded-lg font-medium transition-colors duration-200 lg:px-3 lg:py-2 lg:text-[15px] xl:px-4 xl:text-base
+                className={({
+                  isActive,
+                }) => `rounded-lg font-medium transition-colors duration-200 lg:px-3 lg:py-2 lg:text-[15px] xl:px-4 xl:text-base
                   ${
                     isActive
                       ? "text-brand-500 bg-brand-50 dark:bg-dark-card"
@@ -262,10 +264,6 @@ export default function Header() {
         onClose={() => setQuoteModalOpen(false)}
         title="Tell Us About Your Project"
       >
-        <p className="mb-6 max-w-xl text-base text-gray-600 dark:text-gray-300">
-          Send the basics and we&apos;ll help with the right next step, timing and
-          quote path.
-        </p>
         <QuoteRequestForm
           formName="quote-request"
           formContext="header-modal"

@@ -1,13 +1,23 @@
 import twilio from "twilio";
 
+function normalisePhone(value) {
+  return String(value || "").replace(/[^\d+]/g, "");
+}
+
 export default async (request) => {
   try {
     const { firstName = "there", phone = "" } = await request.json();
     const accountSid = Netlify.env.get("TWILIO_ACCOUNT_SID");
     const authToken = Netlify.env.get("TWILIO_AUTH_TOKEN");
     const fromNumber = Netlify.env.get("TWILIO_FROM_NUMBER");
+    const messagingServiceSid = Netlify.env.get("TWILIO_MESSAGING_SERVICE_SID");
 
-    if (!accountSid || !authToken || !fromNumber || !phone) {
+    if (
+      !accountSid ||
+      !authToken ||
+      (!fromNumber && !messagingServiceSid) ||
+      !phone
+    ) {
       return Response.json(
         { ok: false, reason: "Missing Twilio config or phone" },
         { status: 400 },
@@ -16,11 +26,38 @@ export default async (request) => {
 
     const client = twilio(accountSid, authToken);
     const body = `Thanks ${firstName}, we got your quote request and will contact you soon. Melbourne Pro Painters`;
+    const normalisedTo = normalisePhone(phone);
+    const normalisedFrom = normalisePhone(fromNumber);
 
-    await client.messages.create({
+    if (fromNumber && normalisedTo && normalisedTo === normalisedFrom) {
+      console.log("Skipping SMS because sender and recipient are identical", {
+        to: phone,
+        from: fromNumber,
+      });
+      return Response.json({
+        ok: true,
+        skipped: true,
+        reason: "Sender and recipient are the same number",
+      });
+    }
+
+    const messagePayload = {
       body,
-      from: fromNumber,
       to: phone,
+    };
+
+    if (messagingServiceSid) {
+      messagePayload.messagingServiceSid = messagingServiceSid;
+    } else {
+      messagePayload.from = fromNumber;
+    }
+
+    const result = await client.messages.create(messagePayload);
+    console.log("Twilio SMS sent", {
+      sid: result.sid,
+      status: result.status,
+      to: phone,
+      sender: messagingServiceSid || fromNumber,
     });
 
     return Response.json({ ok: true });
