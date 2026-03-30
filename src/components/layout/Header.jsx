@@ -76,20 +76,20 @@ export default function Header() {
   return (
     <header className={headerCls}>
       <div className="flex items-center justify-between section-wrapper">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-2 shrink-0 min-w-fit">
           <img 
             src={logoSrc} 
             alt="Melbourne Pro Painters Logo" 
-            className="h-10 md:h-12 w-auto transition-transform hover:scale-105 duration-300" 
+            className="h-10 w-auto transition-transform duration-300 shrink-0 hover:scale-105 md:h-12" 
           />
         </Link>
 
-        <nav className="items-center hidden gap-1 lg:flex">
+        <nav className="items-center hidden gap-0.5 lg:flex lg:ml-4 xl:ml-6">
           {navLinks.map((link) =>
             link.children ? (
               <div key={link.label} className="relative group">
                 <button
-                  className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium text-base
+                  className={`flex items-center gap-1 rounded-lg font-medium transition-colors duration-200 lg:px-3 lg:py-2 lg:text-[15px] xl:px-4 xl:text-base
                     transition-colors duration-200
                     ${
                       atTop
@@ -119,9 +119,7 @@ export default function Header() {
               <NavLink
                 key={link.href}
                 to={link.href}
-                className={({
-                  isActive,
-                }) => `px-4 py-2 rounded-lg font-medium text-base transition-colors duration-200
+                className={({ isActive }) => `rounded-lg font-medium transition-colors duration-200 lg:px-3 lg:py-2 lg:text-[15px] xl:px-4 xl:text-base
                   ${
                     isActive
                       ? "text-brand-500 bg-brand-50 dark:bg-dark-card"
@@ -134,13 +132,12 @@ export default function Header() {
               </NavLink>
             ),
           )}
-          <div className="ml-3">
+          <div className="ml-2 shrink-0">
             <ThemeToggle />
           </div>
           <Link
             to="/contact"
-            className="ml-2 px-5 py-2.5 rounded-full bg-brand-500 hover:bg-brand-600
-              text-white font-semibold text-base transition-all duration-300 hover:scale-105 shadow-md shadow-brand-500/30"
+            className="ml-1 shrink-0 whitespace-nowrap rounded-full bg-brand-500 px-4 py-2.5 text-white font-semibold transition-all duration-300 hover:scale-105 hover:bg-brand-600 shadow-md shadow-brand-500/30 lg:text-[15px] xl:ml-2 xl:px-5 xl:text-base"
           >
             Free Quote
           </Link>

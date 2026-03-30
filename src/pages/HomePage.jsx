@@ -12,7 +12,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
 
 // Assets
-import heroImage from "@/assets/images/hero/hero-main.avif";
+import heroImage from "@/assets/images/hero/hero-blog.avif";
 import whyUsImage from "@/assets/images/home/before-after-painting.avif";
 import heroVideo from "@/assets/videos/painters.mp4";
 import heroVideoMobile from "@/assets/videos/painters_mob.mp4";
