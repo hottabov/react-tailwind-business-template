@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronDown } from "lucide-react";
 import SEO from "@/components/ui/SEO";
 import SectionHeading from "@/components/ui/SectionHeading";
 import BlogPostCard from "@/components/ui/BlogPostCard";
 import { seoData } from "@/data/seo";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
-import blogHero from "@/assets/images/hero/hero-main.avif";
+import blogHero from "@/assets/images/hero/hero-blog.avif";
 
 export default function BlogPage() {
   const posts = useBlogPosts();
@@ -15,13 +16,19 @@ export default function BlogPage() {
   const [visibleCount, setVisibleCount] = useState(9);
 
   const categories = useMemo(
-    () => ["All topics", ...new Set(posts.map((post) => post.frontmatter.category))],
-    [posts]
+    () => [
+      "All topics",
+      ...new Set(posts.map((post) => post.frontmatter.category)),
+    ],
+    [posts],
   );
 
   const authors = useMemo(
-    () => ["All authors", ...new Set(posts.map((post) => post.frontmatter.author))],
-    [posts]
+    () => [
+      "All authors",
+      ...new Set(posts.map((post) => post.frontmatter.author)),
+    ],
+    [posts],
   );
 
   const filteredPosts = useMemo(() => {
@@ -62,11 +69,11 @@ export default function BlogPage() {
 
         if (firstEntry?.isIntersecting) {
           setVisibleCount((current) =>
-            Math.min(current + 6, filteredPosts.length)
+            Math.min(current + 6, filteredPosts.length),
           );
         }
       },
-      { rootMargin: "300px 0px" }
+      { rootMargin: "300px 0px" },
     );
 
     observer.observe(loadMoreRef.current);
@@ -78,7 +85,7 @@ export default function BlogPage() {
     <>
       <SEO {...seoData.blog} />
 
-      <section className="relative pt-64 pb-16 overflow-hidden bg-gray-900 text-white text-center">
+      <section className="relative pt-64 pb-16 overflow-hidden text-center text-white bg-gray-900">
         <img
           src={blogHero}
           alt="Freshly painted Melbourne home exterior used for painting advice articles"
@@ -86,10 +93,10 @@ export default function BlogPage() {
         />
         <div className="section-wrapper">
           <div className="relative text-center section-wrapper">
-            <h1 className="font-display text-5xl md:text-6xl mb-4">
+            <h1 className="mb-4 text-5xl font-display md:text-6xl">
               Painting Tips & Advice
             </h1>
-            <p className="text-gray-300 text-xl max-w-xl mx-auto">
+            <p className="max-w-xl mx-auto text-xl text-gray-300">
               Expert painting tips, colour guides, and home improvement advice
               from Melbourne's leading painters.
             </p>
@@ -106,63 +113,83 @@ export default function BlogPage() {
             center
           />
 
-          <div className="mt-12 rounded-[2rem] border border-gray-100 bg-gray-50 p-6 shadow-sm dark:border-dark-border dark:bg-dark-card md:p-8">
-            <div className="grid gap-4 md:grid-cols-3">
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-200">
+          <div className="mt-12 rounded-[2rem] border border-gray-100 bg-gray-50 p-4 shadow-sm dark:border-dark-border dark:bg-dark-card md:p-5">
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,0.9fr)]">
+              <div className="grid items-center gap-2 min-w-0 sm:grid-cols-[auto_minmax(0,1fr)]">
+                <label className="text-sm font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
                   Topic
                 </label>
-                <select
-                  value={selectedCategory}
-                  onChange={(event) => setSelectedCategory(event.target.value)}
-                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
-                >
-                  {categories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={selectedCategory}
+                    onChange={(event) =>
+                      setSelectedCategory(event.target.value)
+                    }
+                    className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-2.5 pr-12 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
+                  >
+                    {categories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-200">
+              <div className="grid items-center gap-2 min-w-0 sm:grid-cols-[auto_minmax(0,1fr)]">
+                <label className="text-sm font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
                   Author
                 </label>
-                <select
-                  value={selectedAuthor}
-                  onChange={(event) => setSelectedAuthor(event.target.value)}
-                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
-                >
-                  {authors.map((author) => (
-                    <option key={author} value={author}>
-                      {author}
-                    </option>
-                  ))}
-                </select>
+                <div className="relative">
+                  <select
+                    value={selectedAuthor}
+                    onChange={(event) => setSelectedAuthor(event.target.value)}
+                    className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-2.5 pr-12 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
+                  >
+                    {authors.map((author) => (
+                      <option key={author} value={author}>
+                        {author}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2"
+                  />
+                </div>
               </div>
 
-              <div>
-                <label className="mb-2 block text-sm font-semibold text-gray-700 dark:text-gray-200">
+              <div className="grid items-center gap-2 min-w-0 sm:grid-cols-[auto_minmax(0,1fr)]">
+                <label className="text-sm font-semibold text-gray-700 dark:text-gray-200 whitespace-nowrap">
                   Sort
                 </label>
-                <select
-                  value={sortOrder}
-                  onChange={(event) => setSortOrder(event.target.value)}
-                  className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
-                >
-                  <option value="newest">Newest to oldest</option>
-                  <option value="oldest">Oldest to newest</option>
-                </select>
+                <div className="relative">
+                  <select
+                    value={sortOrder}
+                    onChange={(event) => setSortOrder(event.target.value)}
+                    className="w-full appearance-none rounded-xl border border-gray-200 bg-white px-4 py-2.5 pr-12 text-gray-900 transition-all focus:outline-none focus:ring-2 focus:ring-brand-500 dark:border-dark-border dark:bg-dark-bg dark:text-white"
+                  >
+                    <option value="newest">Newest to oldest</option>
+                    <option value="oldest">Oldest to newest</option>
+                  </select>
+                  <ChevronDown
+                    size={16}
+                    className="absolute text-gray-400 -translate-y-1/2 pointer-events-none right-4 top-1/2"
+                  />
+                </div>
               </div>
             </div>
 
-            <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+            <p className="mt-4 text-sm text-center text-gray-500 dark:text-gray-400 md:text-left">
               Showing {visiblePosts.length} of {filteredPosts.length} articles.
             </p>
           </div>
 
-          <div className="grid mt-12 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3">
             {visiblePosts.map((post, i) => (
               <BlogPostCard
                 key={post.slug}
@@ -175,7 +202,7 @@ export default function BlogPage() {
 
           {hasMorePosts && (
             <div ref={loadMoreRef} className="flex justify-center pt-10">
-              <div className="inline-flex items-center rounded-full border border-gray-200 bg-gray-50 px-5 py-3 text-sm font-semibold text-gray-500 dark:border-dark-border dark:bg-dark-card dark:text-gray-300">
+              <div className="inline-flex items-center px-5 py-3 text-sm font-semibold text-gray-500 border border-gray-200 rounded-full bg-gray-50 dark:border-dark-border dark:bg-dark-card dark:text-gray-300">
                 Loading more articles as you scroll...
               </div>
             </div>

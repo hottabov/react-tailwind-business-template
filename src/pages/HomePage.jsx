@@ -14,6 +14,8 @@ import { useBlogPosts } from "@/hooks/useBlogPosts";
 // Assets
 import heroImage from "@/assets/images/hero/hero-main.avif";
 import whyUsImage from "@/assets/images/home/before-after-painting.avif";
+import heroVideo from "@/assets/videos/painters.mp4";
+import heroVideoMobile from "@/assets/videos/painters_mob.mp4";
 
 const whyUs = [
   "Licensed & fully insured (VBA registered)",
@@ -48,13 +50,32 @@ export default function HomePage() {
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
       <section className="relative flex items-center justify-center min-h-screen overflow-hidden">
-        {/* Background image */}
+        {/* Background video */}
         <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Professional painters working on a Melbourne home"
-            className="object-cover w-full h-full"
-          />
+          <video
+            className="hidden object-cover w-full h-full md:block"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={heroImage}
+            aria-hidden="true"
+          >
+            <source src={heroVideo} type="video/mp4" />
+          </video>
+          <video
+            className="block object-cover w-full h-full md:hidden"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster={heroImage}
+            aria-hidden="true"
+          >
+            <source src={heroVideoMobile} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 hero-overlay" />
         </div>
 
