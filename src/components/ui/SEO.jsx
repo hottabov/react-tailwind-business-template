@@ -6,11 +6,23 @@ function toAbsoluteUrl(value) {
   return new URL(value || "/", siteConfig.url).toString();
 }
 
+function getMimeTypeFromUrl(url) {
+  if (!url) return "image/jpeg";
+
+  if (url.endsWith(".avif")) return "image/avif";
+  if (url.endsWith(".webp")) return "image/webp";
+  if (url.endsWith(".png")) return "image/png";
+  if (url.endsWith(".gif")) return "image/gif";
+
+  return "image/jpeg";
+}
+
 export default function SEO({
   title,
   description,
   keywords,
   image,
+  imageAlt,
   canonicalPath,
   type = "website",
   noIndex = false,
@@ -23,6 +35,7 @@ export default function SEO({
   const pageTitle = title || siteConfig.defaultTitle;
   const pageDescription = description || siteConfig.defaultDescription;
   const pageImage = toAbsoluteUrl(image || siteConfig.defaultImage);
+  const pageImageAlt = imageAlt || pageTitle;
   const canonicalUrl = toAbsoluteUrl(canonicalPath || pathname || "/");
   const pageType = type === "article" ? "article" : "website";
   const robots = noIndex
@@ -148,11 +161,16 @@ export default function SEO({
       <meta property="og:description" content={pageDescription} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:image" content={pageImage} />
+      <meta property="og:image:secure_url" content={pageImage} />
+      <meta property="og:image:type" content={getMimeTypeFromUrl(pageImage)} />
+      <meta property="og:image:alt" content={pageImageAlt} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={pageTitle} />
       <meta name="twitter:description" content={pageDescription} />
+      <meta name="twitter:url" content={canonicalUrl} />
       <meta name="twitter:image" content={pageImage} />
+      <meta name="twitter:image:alt" content={pageImageAlt} />
 
       {publishedTime && (
         <meta property="article:published_time" content={publishedTime} />

@@ -12,7 +12,7 @@ export function ThemeProvider({ children }) {
     () => localStorage.getItem('theme') || 'system'
   );
   
-  // colorTheme: 'default', 'ocean', 'forest', 'rust'
+  // colorTheme: 'default', 'ocean', 'forest', 'rust', or 'ruby'
   const [colorTheme, setColorTheme] = useState(
     () => localStorage.getItem('colorTheme') || 'default'
   );

@@ -1,97 +1,24 @@
+import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, MapPin, ArrowLeft, Tag } from 'lucide-react';
+import {
+  Calendar,
+  MapPin,
+  ArrowLeft,
+  Tag,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from 'lucide-react';
 import SEO from '@/components/ui/SEO';
 import CTA from '@/components/ui/CTA';
+import MarkdownContent from '@/components/ui/MarkdownContent';
 import { usePortfolioItem, usePortfolioItems } from '@/hooks/usePortfolioItems';
-
-const projectFit = {
-  Interior: 'Feature rooms, full-home refreshes and pre-sale interiors',
-  Exterior: 'Weatherboards, facades and full exterior repaints',
-  Roof: 'Tile and Colorbond roof restoration projects',
-  Deck: 'Outdoor timber restoration and oiling',
-  Fence: 'Fence repainting and outdoor refresh work',
-  Commercial: 'Offices, retail spaces and business repaint projects',
-};
-
-function Markdown({ text }) {
-  const lines = text.trim().split('\n');
-  const els = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const l = lines[i];
-
-    if (l.startsWith('## ')) {
-      els.push(
-        <h2
-          key={i}
-          className="font-display text-3xl mt-10 mb-4 text-gray-900 dark:text-white"
-        >
-          {l.slice(3)}
-        </h2>
-      );
-    } else if (l.startsWith('- ') || l.startsWith('* ')) {
-      const items = [];
-      while (
-        i < lines.length &&
-        (lines[i].startsWith('- ') || lines[i].startsWith('* '))
-      ) {
-        items.push(
-          <li
-            key={i}
-            className="ml-5 list-disc text-gray-600 dark:text-gray-300"
-          >
-            {lines[i].slice(2)}
-          </li>
-        );
-        i++;
-      }
-      els.push(
-        <ul key={`ul${i}`} className="my-4 space-y-1">
-          {items}
-        </ul>
-      );
-      continue;
-    } else if (/^\d+\./.test(l)) {
-      const items = [];
-      while (i < lines.length && /^\d+\./.test(lines[i])) {
-        items.push(
-          <li
-            key={i}
-            className="text-gray-600 dark:text-gray-300"
-          >
-            {lines[i].replace(/^\d+\.\s*/, '')}
-          </li>
-        );
-        i++;
-      }
-      els.push(
-        <ol key={`ol${i}`} className="list-decimal pl-6 my-4 space-y-1">
-          {items}
-        </ol>
-      );
-      continue;
-    } else if (l.trim()) {
-      const html = l.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      els.push(
-        <p
-          key={i}
-          className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      );
-    }
-
-    i++;
-  }
-
-  return <div className="prose-custom">{els}</div>;
-}
 
 export default function PortfolioItemPage() {
   const { slug } = useParams();
   const item = usePortfolioItem(slug);
   const all = usePortfolioItems();
+  const [lightboxIndex, setLightboxIndex] = useState(null);
 
   if (!item) {
     return (
@@ -110,17 +37,64 @@ export default function PortfolioItemPage() {
     .filter(p => p.slug !== slug)
     .slice(0, 8);
 
+  const galleryImages = [
+    frontmatter.beforeImage
+      ? {
+          src: frontmatter.beforeImage,
+          alt: `${frontmatter.title} before painting`,
+          label: 'Before',
+        }
+      : null,
+    frontmatter.afterImage
+      ? {
+          src: frontmatter.afterImage,
+          alt: `${frontmatter.title} after painting`,
+          label: 'After',
+        }
+      : null,
+  ].filter(Boolean);
+
+  const hasGallery = galleryImages.length > 0;
+  const activeImage = lightboxIndex !== null ? galleryImages[lightboxIndex] : null;
+
+  useEffect(() => {
+    if (lightboxIndex === null) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setLightboxIndex(null);
+      } else if (event.key === 'ArrowRight' && galleryImages.length > 1) {
+        setLightboxIndex((current) => (current + 1) % galleryImages.length);
+      } else if (event.key === 'ArrowLeft' && galleryImages.length > 1) {
+        setLightboxIndex(
+          (current) => (current - 1 + galleryImages.length) % galleryImages.length
+        );
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [galleryImages.length, lightboxIndex]);
+
   return (
     <>
       <SEO
         title={`${frontmatter.title} | Painting Portfolio | Melbourne Pro Painters`}
         description={frontmatter.excerpt}
-        image={frontmatter.coverImage}
+        image={frontmatter.afterImage || frontmatter.coverImage}
         schema={{
           "@type": "CreativeWork",
           name: frontmatter.title,
           description: frontmatter.excerpt,
-          image: [frontmatter.coverImage],
+          image: [frontmatter.afterImage || frontmatter.coverImage],
           genre: frontmatter.category,
           contentLocation: {
             "@type": "Place",
@@ -175,86 +149,47 @@ export default function PortfolioItemPage() {
               {frontmatter.excerpt}
             </p>
 
-            <div className="grid gap-4 mb-8 md:grid-cols-[minmax(0,1.35fr)_minmax(0,0.95fr)]">
-              <div className="rounded-[2rem] bg-gray-50 dark:bg-dark-card border border-gray-100 dark:border-dark-border p-6 md:p-7">
-                <h2 className="text-2xl font-display text-gray-900 dark:text-white mb-5">
-                  Project Snapshot
-                </h2>
-                <div className="grid gap-4 sm:grid-cols-3">
+            {/* Before / After якщо є */}
+            {hasGallery && (
+              <div className="mb-10">
+                <div className="flex items-end justify-between gap-4 mb-5">
                   <div>
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
-                      Category
-                    </div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">
-                      {frontmatter.category}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
-                      Location
-                    </div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">
-                      {frontmatter.location}
-                    </div>
-                  </div>
-                  <div>
-                    <div className="text-xs font-semibold uppercase tracking-[0.18em] text-gray-400 mb-2">
-                      Best Fit
-                    </div>
-                    <div className="text-base font-semibold text-gray-900 dark:text-white">
-                      {projectFit[frontmatter.category] || 'Homes and businesses needing a high-quality repaint'}
-                    </div>
+                    <h2 className="text-2xl font-display text-gray-900 dark:text-white">
+                      Before and After
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+                      Click either image to open the full-size comparison and move
+                      between slides.
+                    </p>
                   </div>
                 </div>
-              </div>
 
-              <div className="rounded-[2rem] bg-gray-900 text-white p-6 md:p-7">
-                <h2 className="text-2xl font-display mb-3">
-                  Want a Similar Result?
-                </h2>
-                <p className="text-white/70 leading-relaxed mb-6">
-                  Tell us what you are painting and we will help you map the right scope, finish and next-step quote.
-                </p>
-                <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center w-full px-5 py-3 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-colors"
-                >
-                  Request a Similar Quote
-                </Link>
-              </div>
-            </div>
-
-            {/* Before / After якщо є */}
-            {(frontmatter.beforeImage || frontmatter.afterImage) && (
-              <div className="grid sm:grid-cols-2 gap-4 mb-8">
-                {frontmatter.beforeImage && (
-                  <div>
-                    <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1">
-                      Before
-                    </div>
-                    <img loading="lazy"
-                      src={frontmatter.beforeImage}
-                      alt="Before painting"
-                      className="w-full rounded-2xl object-cover shadow-md"
-                    />
-                  </div>
-                )}
-                {frontmatter.afterImage && (
-                  <div>
-                    <div className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-1">
-                      After
-                    </div>
-                    <img loading="lazy"
-                      src={frontmatter.afterImage}
-                      alt="After painting"
-                      className="w-full rounded-2xl object-cover shadow-md"
-                    />
-                  </div>
-                )}
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {galleryImages.map((image, index) => (
+                    <button
+                      key={image.label}
+                      type="button"
+                      onClick={() => setLightboxIndex(index)}
+                      className="group relative isolate overflow-hidden text-left rounded-[1.75rem] border border-gray-100 bg-gray-50 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl dark:border-dark-border dark:bg-dark-card"
+                    >
+                      <div className="absolute left-4 top-4 z-10 rounded-full bg-gray-900/80 px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+                        {image.label}
+                      </div>
+                      <div className="aspect-[3/4] overflow-hidden rounded-[inherit]">
+                        <img
+                          loading="lazy"
+                          src={image.src}
+                          alt={image.alt}
+                          className="h-full w-full rounded-[inherit] object-cover transition-transform duration-500 will-change-transform group-hover:scale-105"
+                        />
+                      </div>
+                    </button>
+                  ))}
+                </div>
               </div>
             )}
 
-            <Markdown text={content} />
+            <MarkdownContent text={content} />
           </div>
 
           {/* Сайдбар з останніми роботами */}
@@ -315,6 +250,71 @@ export default function PortfolioItemPage() {
         subtitle="Book a free inspection and quote anywhere in Melbourne."
         supportingText="Fast response and clear next steps"
       />
+
+      {activeImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-gray-950/95 px-4 py-6"
+          role="dialog"
+          aria-modal="true"
+          aria-label={`${activeImage.label} image lightbox`}
+          onClick={() => setLightboxIndex(null)}
+        >
+          <button
+            type="button"
+            onClick={() => setLightboxIndex(null)}
+            className="absolute top-4 right-4 inline-flex items-center justify-center w-11 h-11 rounded-full border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
+            aria-label="Close lightbox"
+          >
+            <X size={20} />
+          </button>
+
+          {galleryImages.length > 1 && (
+            <>
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setLightboxIndex(
+                    (current) => (current - 1 + galleryImages.length) % galleryImages.length
+                  );
+                }}
+                className="absolute left-4 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
+                aria-label="Show previous image"
+              >
+                <ChevronLeft size={22} />
+              </button>
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setLightboxIndex(
+                    (current) => (current + 1) % galleryImages.length
+                  );
+                }}
+                className="absolute right-4 top-1/2 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white transition-colors hover:bg-white/20"
+                aria-label="Show next image"
+              >
+                <ChevronRight size={22} />
+              </button>
+            </>
+          )}
+
+          <div
+            className="relative flex max-h-full max-w-full flex-col items-center"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="mb-4 rounded-full bg-white/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.18em] text-white backdrop-blur-sm">
+              {activeImage.label}
+            </div>
+            <img
+              src={activeImage.src}
+              alt={activeImage.alt}
+              className="block max-h-[78vh] max-w-full h-auto w-auto object-contain"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 }

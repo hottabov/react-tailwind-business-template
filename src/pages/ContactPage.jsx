@@ -1,29 +1,18 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   Phone,
   Mail,
   MapPin,
   Clock,
-  CheckCircle,
-  ArrowRight,
+  ChevronDown,
 } from "lucide-react";
 import SEO from "@/components/ui/SEO";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { seoData } from "@/data/seo";
-
-const contactTrustPoints = [
-  "Response within 24 hours",
-  "Fixed written quotes",
-  "No-obligation site visits",
-  "Warranty on all work",
-];
-
-const quoteChecklist = [
-  "Property type or business type",
-  "Suburb and access details",
-  "What needs painting",
-  "Rough timing or deadline",
-];
+import contactHero from "@/assets/images/about/painting-outside.avif";
+import contactProcessImage from "@/assets/images/about/painting-the-room.avif";
+import contactFaqImage from "@/assets/images/about/about-pro-painters.avif";
 
 const nextSteps = [
   {
@@ -62,6 +51,7 @@ const contactFaqs = [
 ];
 
 export default function ContactPage() {
+  const [openFaq, setOpenFaq] = useState(0);
   const {
     register,
     handleSubmit,
@@ -90,15 +80,22 @@ export default function ContactPage() {
     <>
       <SEO {...seoData.contact} type="contact" schema={faqSchema} />
 
-      <section className="pt-32 pb-16 text-center text-white bg-gray-900">
+      <section className="relative pt-64 pb-16 overflow-hidden text-center text-white bg-gray-900">
+        <img
+          src={contactHero}
+          alt="Painter working on an exterior project in Melbourne"
+          className="absolute inset-0 object-cover w-full h-full opacity-20"
+        />
         <div className="section-wrapper">
-          <h1 className="mb-4 text-5xl font-display md:text-6xl">
-            Get a Free Quote
-          </h1>
-          <p className="max-w-xl mx-auto text-xl text-gray-300">
-            Tell us what needs painting and we will come back with clear next
-            steps, honest advice and a no-obligation quote.
-          </p>
+          <div className="relative text-center section-wrapper">
+            <h1 className="mb-4 text-5xl font-display md:text-6xl">
+              Get a Free Quote
+            </h1>
+            <p className="max-w-xl mx-auto text-xl text-gray-300">
+              Tell us what needs painting and we will come back with clear next
+              steps, honest advice and a no-obligation quote.
+            </p>
+          </div>
         </div>
       </section>
 
@@ -107,17 +104,6 @@ export default function ContactPage() {
           {/* Contact form */}
           <div id="quote-form">
             <SectionHeading eyebrow="Contact Us" title="Send Us a Message" />
-            <div className="flex flex-wrap gap-3 mb-8">
-              {contactTrustPoints.map((item) => (
-                <div
-                  key={item}
-                  className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-full bg-gray-50 dark:bg-dark-card dark:border-dark-border dark:text-gray-200"
-                >
-                  <CheckCircle size={16} className="text-brand-500" />
-                  {item}
-                </div>
-              ))}
-            </div>
 
             {isSubmitSuccessful && (
               <div className="p-4 mb-6 text-green-700 border border-green-200 rounded-2xl bg-green-50 dark:bg-green-900/20 dark:border-green-800 dark:text-green-300">
@@ -235,29 +221,6 @@ export default function ContactPage() {
                 />
               </div>
 
-              <div className="p-5 border border-gray-100 rounded-3xl bg-gray-50 dark:bg-dark-card dark:border-dark-border">
-                <div className="flex items-center gap-2 mb-3">
-                  <ArrowRight size={16} className="text-brand-500" />
-                  <h3 className="text-sm font-semibold uppercase tracking-[0.16em] text-gray-500 dark:text-gray-400">
-                    Fastest way to get quoted
-                  </h3>
-                </div>
-                <div className="grid gap-2 sm:grid-cols-2">
-                  {quoteChecklist.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
-                    >
-                      <CheckCircle
-                        size={15}
-                        className="text-brand-500 shrink-0"
-                      />
-                      <span>{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               <button
                 type="submit"
                 className="w-full py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-lg
@@ -274,31 +237,6 @@ export default function ContactPage() {
 
           {/* Contact info */}
           <div className="space-y-8">
-            <SectionHeading
-              eyebrow="What Happens Next"
-              title="Fast, Clear Next Steps"
-            />
-
-            <div className="rounded-[2rem] bg-gray-900 text-white p-7 md:p-8 shadow-xl">
-              <div className="space-y-5">
-                {nextSteps.map((step, index) => (
-                  <div key={step.title} className="flex gap-4">
-                    <div className="flex items-center justify-center w-10 h-10 font-bold text-white rounded-2xl bg-brand-500 font-display shrink-0">
-                      {index + 1}
-                    </div>
-                    <div>
-                      <h3 className="mb-1 text-lg font-semibold">
-                        {step.title}
-                      </h3>
-                      <p className="leading-relaxed text-white/70">
-                        {step.description}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <SectionHeading eyebrow="Reach Us" title="Contact Information" />
 
             {[
@@ -362,29 +300,114 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50 dark:bg-dark-card">
-        <div className="section-wrapper">
-          <SectionHeading
-            eyebrow="Before You Enquire"
-            title="Questions We Hear All The Time"
-            subtitle="Quick answers that make it easier to send your quote request with confidence."
-            center
-          />
+      <section className="py-24 bg-gray-50 dark:bg-dark-card">
+        <div className="grid items-stretch gap-10 section-wrapper lg:grid-cols-2">
+          <div className="overflow-hidden rounded-[2rem] min-h-[520px] shadow-xl">
+            <img
+              src={contactProcessImage}
+              alt="Painter preparing an interior room before quoting and repainting"
+              className="w-full h-full object-cover"
+            />
+          </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {contactFaqs.map((faq) => (
-              <div
-                key={faq.question}
-                className="bg-white border border-gray-100 shadow-sm rounded-3xl dark:bg-dark-bg dark:border-dark-border p-7"
-              >
-                <h3 className="mb-4 text-xl text-gray-900 font-display dark:text-white">
-                  {faq.question}
-                </h3>
-                <p className="leading-relaxed text-gray-600 dark:text-gray-400">
-                  {faq.answer}
-                </p>
+          <div className="relative overflow-hidden rounded-[2rem] border border-brand-500/20 bg-brand-50 p-7 text-gray-900 shadow-xl shadow-brand-500/5 dark:border-brand-500/15 dark:bg-brand-500/10 dark:text-white md:p-8">
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/70 via-white/10 to-brand-500/10 dark:from-white/5 dark:via-transparent dark:to-brand-500/5" />
+
+            <div className="relative z-10">
+              <SectionHeading
+                eyebrow="What Happens Next"
+                title="Fast, Clear Next Steps"
+              />
+
+              <div className="space-y-5 mt-8">
+                {nextSteps.map((step, index) => (
+                  <div key={step.title} className="flex gap-4">
+                    <div className="flex items-center justify-center w-10 h-10 font-bold text-white rounded-2xl bg-brand-500 font-display shrink-0">
+                      {index + 1}
+                    </div>
+                    <div>
+                      <h3 className="mb-1 text-lg font-semibold text-gray-900 dark:text-white">
+                        {step.title}
+                      </h3>
+                      <p className="leading-relaxed text-gray-600 dark:text-gray-300">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white dark:bg-dark-bg">
+        <div className="grid items-start gap-10 section-wrapper lg:grid-cols-[minmax(0,1.2fr)_minmax(340px,0.8fr)]">
+          <div>
+            <SectionHeading
+              eyebrow="Before You Enquire"
+              title="Questions We Hear All The Time"
+              subtitle="Quick answers that make it easier to send your quote request with confidence."
+            />
+
+            <div className="mt-10 space-y-4">
+              {contactFaqs.map((faq, index) => {
+                const panelId = `contact-faq-panel-${index}`;
+                const buttonId = `contact-faq-button-${index}`;
+                const isOpen = openFaq === index;
+
+                return (
+                  <div
+                    key={faq.question}
+                    className="overflow-hidden bg-gray-50 border border-gray-100 shadow-sm rounded-3xl dark:bg-dark-card dark:border-dark-border"
+                  >
+                    <h3>
+                      <button
+                        id={buttonId}
+                        type="button"
+                        aria-expanded={isOpen}
+                        aria-controls={panelId}
+                        onClick={() => setOpenFaq(isOpen ? -1 : index)}
+                        className="flex items-center justify-between w-full gap-4 px-6 py-5 text-left transition-colors md:px-7 md:py-6 hover:bg-brand-50/60 dark:hover:bg-dark-bg"
+                      >
+                        <span className="text-lg font-semibold text-gray-900 font-display dark:text-white">
+                          {faq.question}
+                        </span>
+                        <ChevronDown
+                          size={20}
+                          className={`shrink-0 text-brand-500 transition-transform duration-300 ${
+                            isOpen ? "rotate-180" : ""
+                          }`}
+                        />
+                      </button>
+                    </h3>
+
+                    <div
+                      id={panelId}
+                      role="region"
+                      aria-labelledby={buttonId}
+                      className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+                        isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                      }`}
+                    >
+                      <div className="overflow-hidden">
+                        <div className="px-6 pb-6 leading-relaxed text-gray-600 md:px-7 dark:text-gray-300">
+                          {faq.answer}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="overflow-hidden rounded-[2rem] shadow-xl">
+            <img
+              src={contactFaqImage}
+              alt="Melbourne Pro Painters team on site during a completed project"
+              className="w-full h-[520px] object-cover"
+            />
           </div>
         </div>
       </section>

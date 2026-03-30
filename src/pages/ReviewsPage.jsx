@@ -4,24 +4,32 @@ import StarRating from "@/components/ui/StarRating";
 import CTA from "@/components/ui/CTA";
 import { seoData } from "@/data/seo";
 import { reviews } from "@/data/reviews";
+import reviewsHero from "@/assets/images/about/about-pro-painters.avif";
 
 export default function ReviewsPage() {
   return (
     <>
       <SEO {...seoData.reviews} />
 
-      <section className="pt-32 pb-16 bg-gray-900 text-white text-center">
+      <section className="relative pt-64 pb-16 overflow-hidden bg-gray-900 text-white text-center">
+        <img
+          src={reviewsHero}
+          alt="Melbourne Pro Painters team with a completed painting project"
+          className="absolute inset-0 object-cover w-full h-full opacity-20"
+        />
         <div className="section-wrapper">
-          <div className="flex justify-center mb-4">
-            <StarRating />
+          <div className="relative text-center section-wrapper">
+            <div className="flex justify-center mb-4">
+              <StarRating />
+            </div>
+            <h1 className="font-display text-5xl md:text-6xl mb-4">
+              Customer Reviews
+            </h1>
+            <p className="text-gray-300 text-xl max-w-xl mx-auto">
+              Don't take our word for it — hear from the hundreds of Melbourne
+              homeowners and businesses we've transformed.
+            </p>
           </div>
-          <h1 className="font-display text-5xl md:text-6xl mb-4">
-            Customer Reviews
-          </h1>
-          <p className="text-gray-300 text-xl max-w-xl mx-auto">
-            Don't take our word for it — hear from the hundreds of Melbourne
-            homeowners and businesses we've transformed.
-          </p>
         </div>
       </section>
 

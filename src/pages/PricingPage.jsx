@@ -13,6 +13,7 @@ import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { seoData } from "@/data/seo";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import pricingHero from "@/assets/images/about/painting-the-room.avif";
 
 const pricingPackages = [
   {
@@ -153,21 +154,30 @@ export default function PricingPage() {
       <SEO {...seoData.pricing} schema={faqSchema} />
 
       {/* ── HERO ──────────────────────────────────────────────────── */}
-      <section className="pt-32 pb-20 text-center text-white bg-gray-900">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-300 text-sm font-semibold tracking-wider uppercase mb-6 animate-fade-in">
-          Transparent Pricing
-        </span>
-        <h1 className="mb-6 text-5xl font-display md:text-6xl animate-fade-up">
-          How Much Does It Cost <br />
-          <span className="text-brand-500">To Paint a House?</span>
-        </h1>
-        <p
-          className="max-w-2xl mx-auto text-xl text-gray-300 animate-fade-up"
-          style={{ animationDelay: "0.1s", animationFillMode: "backwards" }}
-        >
-          Every home is unique, but we believe in being upfront about costs.
-          Here is a guide to average painting prices in Melbourne.
-        </p>
+      <section className="relative pt-64 pb-20 overflow-hidden text-center text-white bg-gray-900">
+        <img
+          src={pricingHero}
+          alt="Painter preparing an interior room for a quote and repaint"
+          className="absolute inset-0 object-cover w-full h-full opacity-20"
+        />
+        <div className="section-wrapper">
+          <div className="relative text-center section-wrapper">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-brand-500/20 border border-brand-500/40 text-brand-300 text-sm font-semibold tracking-wider uppercase mb-6 animate-fade-in">
+              Transparent Pricing
+            </span>
+            <h1 className="mb-6 text-5xl font-display md:text-6xl animate-fade-up">
+              How Much Does It Cost <br />
+              <span className="text-brand-500">To Paint a House?</span>
+            </h1>
+            <p
+              className="max-w-2xl mx-auto text-xl text-gray-300 animate-fade-up"
+              style={{ animationDelay: "0.1s", animationFillMode: "backwards" }}
+            >
+              Every home is unique, but we believe in being upfront about costs.
+              Here is a guide to average painting prices in Melbourne.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* ── PRICING PACKAGES ──────────────────────────────────────── */}
@@ -280,31 +290,35 @@ export default function PricingPage() {
             ))}
           </div>
 
-          <div className="mt-12 rounded-[2rem] bg-gray-900 text-white p-8 md:p-10 lg:p-12">
-            <div className="max-w-3xl">
-              <span className="inline-block mb-3 text-sm font-semibold tracking-widest uppercase text-brand-300">
+          <div className="relative mt-12 overflow-hidden rounded-[2rem] border border-brand-500/20 bg-brand-50 p-8 text-gray-900 shadow-xl shadow-brand-500/5 dark:border-brand-500/15 dark:bg-brand-500/10 dark:text-white md:p-10 lg:p-12">
+            <div className="absolute inset-0 pointer-events-none bg-gradient-to-br from-white/70 via-white/10 to-brand-500/10 dark:from-white/5 dark:via-transparent dark:to-brand-500/5" />
+
+            <div className="relative z-10 max-w-3xl">
+              <span className="inline-block mb-3 text-sm font-semibold tracking-widest uppercase text-brand-600 dark:text-brand-300">
                 Fast Quote Journey
               </span>
-              <h2 className="mb-4 text-3xl md:text-4xl font-display">
+              <h2 className="mb-4 text-3xl text-gray-900 md:text-4xl font-display dark:text-white">
                 How Fast Quoting Works
               </h2>
-              <p className="text-lg text-white/70">
+              <p className="text-lg text-gray-600 dark:text-gray-300">
                 From first message to written quote, we keep the process simple,
                 clear and low-stress.
               </p>
             </div>
 
-            <div className="grid gap-6 mt-10 md:grid-cols-3">
+            <div className="relative z-10 grid gap-6 mt-10 md:grid-cols-3">
               {quoteSteps.map((step, index) => (
                 <div
                   key={step.title}
-                  className="p-6 border rounded-3xl bg-white/5 border-white/10"
+                  className="rounded-3xl border border-brand-500/15 bg-white/80 p-6 shadow-sm backdrop-blur-sm dark:border-dark-border dark:bg-dark-card/80"
                 >
-                  <div className="flex items-center justify-center w-12 h-12 mb-5 text-xl font-bold text-white rounded-2xl bg-brand-500 font-display">
+                  <div className="flex items-center justify-center w-12 h-12 mb-5 text-xl font-bold text-white rounded-2xl bg-brand-500 shadow-lg shadow-brand-500/20 font-display">
                     {index + 1}
                   </div>
-                  <h3 className="mb-3 text-xl font-semibold">{step.title}</h3>
-                  <p className="leading-relaxed text-white/70">
+                  <h3 className="mb-3 text-xl font-semibold text-gray-900 dark:text-white">
+                    {step.title}
+                  </h3>
+                  <p className="leading-relaxed text-gray-600 dark:text-gray-300">
                     {step.description}
                   </p>
                 </div>

@@ -1,89 +1,18 @@
-import { useParams, Link } from 'react-router-dom';
+import { useMemo } from 'react';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { Calendar, User, ArrowLeft, Tag } from 'lucide-react';
 import SEO from '@/components/ui/SEO';
 import CTA from '@/components/ui/CTA';
+import SectionHeading from '@/components/ui/SectionHeading';
+import BlogPostCard from '@/components/ui/BlogPostCard';
+import ArticleShare from '@/components/ui/ArticleShare';
+import { siteConfig } from '@/data/site';
+import MarkdownContent from '@/components/ui/MarkdownContent';
 import { useBlogPost, useBlogPosts } from '@/hooks/useBlogPosts';
-
-/**
- * Простий markdown → JSX для контенту статті.
- */
-function Markdown({ text }) {
-  const lines = text.trim().split('\n');
-  const els = [];
-  let i = 0;
-
-  while (i < lines.length) {
-    const l = lines[i];
-
-    if (l.startsWith('## ')) {
-      els.push(
-        <h2
-          key={i}
-          className="font-display text-3xl mt-10 mb-4 text-gray-900 dark:text-white"
-        >
-          {l.slice(3)}
-        </h2>
-      );
-    } else if (l.startsWith('- ') || l.startsWith('* ')) {
-      const items = [];
-      while (
-        i < lines.length &&
-        (lines[i].startsWith('- ') || lines[i].startsWith('* '))
-      ) {
-        items.push(
-          <li
-            key={i}
-            className="ml-5 list-disc text-gray-600 dark:text-gray-300"
-          >
-            {lines[i].slice(2)}
-          </li>
-        );
-        i++;
-      }
-      els.push(
-        <ul key={`ul${i}`} className="my-4 space-y-1">
-          {items}
-        </ul>
-      );
-      continue;
-    } else if (/^\d+\./.test(l)) {
-      const items = [];
-      while (i < lines.length && /^\d+\./.test(lines[i])) {
-        items.push(
-          <li
-            key={i}
-            className="text-gray-600 dark:text-gray-300"
-          >
-            {lines[i].replace(/^\d+\.\s*/, '')}
-          </li>
-        );
-        i++;
-      }
-      els.push(
-        <ol key={`ol${i}`} className="list-decimal pl-6 my-4 space-y-1">
-          {items}
-        </ol>
-      );
-      continue;
-    } else if (l.trim()) {
-      const html = l.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      els.push(
-        <p
-          key={i}
-          className="text-gray-600 dark:text-gray-300 mb-4 leading-relaxed"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      );
-    }
-
-    i++;
-  }
-
-  return <div className="prose-custom">{els}</div>;
-}
 
 export default function BlogPostPage() {
   const { slug } = useParams();
+  const { pathname } = useLocation();
   const post = useBlogPost(slug);
   const allPosts = useBlogPosts();
 
@@ -100,11 +29,27 @@ export default function BlogPostPage() {
 
   const { frontmatter, content } = post;
   const publishedTime = new Date(frontmatter.date).toISOString();
+  const articleUrl = `${siteConfig.url}${pathname}`;
 
   // Останні 8 статей для сайдбару (без поточної)
   const sidebarPosts = allPosts
     .filter(p => p.slug !== slug)
     .slice(0, 8);
+
+  const relatedPosts = useMemo(() => {
+    const sameCategory = allPosts.filter(
+      (candidate) =>
+        candidate.slug !== slug &&
+        candidate.frontmatter.category === frontmatter.category
+    );
+
+    const fallbackPosts = allPosts.filter((candidate) => candidate.slug !== slug);
+    const pool = sameCategory.length >= 3 ? sameCategory : fallbackPosts;
+
+    return [...pool]
+      .sort(() => Math.random() - 0.5)
+      .slice(0, 3);
+  }, [allPosts, frontmatter.category, slug]);
 
   return (
     <>
@@ -175,7 +120,10 @@ export default function BlogPostPage() {
             <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 italic border-l-4 border-brand-500 pl-5 leading-relaxed">
               {frontmatter.excerpt}
             </p>
-            <Markdown text={content} />
+            <MarkdownContent text={content} />
+            <div className="mt-10">
+              <ArticleShare url={articleUrl} title={frontmatter.title} />
+            </div>
           </div>
 
           {/* Сайдбар з останніми статтями */}
@@ -229,6 +177,23 @@ export default function BlogPostPage() {
               </div>
             </div>
           </aside>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-50 dark:bg-dark-card">
+        <div className="section-wrapper">
+          <SectionHeading
+            eyebrow="Related Posts"
+            title="Read More On This Topic"
+            subtitle="Here are three more articles that explore similar painting questions, decisions and project ideas."
+            center
+          />
+
+          <div className="grid gap-8 mt-12 md:grid-cols-2 lg:grid-cols-3">
+            {relatedPosts.map((relatedPost) => (
+              <BlogPostCard key={relatedPost.slug} post={relatedPost} />
+            ))}
+          </div>
         </div>
       </section>
 

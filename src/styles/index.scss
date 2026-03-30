@@ -61,10 +61,16 @@
   html[data-theme='rust'] {
     @include generate-theme(30, 12%, 15, 75%);
   }
+
+  // 5. Ruby Atelier
+  // Contrast: Refined Ruby Red (350) against Cool Blue-Slate (222)
+  html[data-theme='ruby'] {
+    @include generate-theme(222, 14%, 350, 78%);
+  }
 }
 
 // ─── Google Font import fallback (Vite also loads via index.html) ─────────────
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sansita&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 
 
@@ -110,7 +116,7 @@ body {
 // ─── Blog Markdown content typography ─────────────────────────────────────────
 .prose-custom {
   h1, h2, h3, h4 {
-    font-family: 'DM Serif Display', Georgia, serif;
+    font-family: 'Sansita', cursive;
     color: $text-light;
 
     .dark & {

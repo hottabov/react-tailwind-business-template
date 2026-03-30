@@ -6,7 +6,8 @@ const colorThemes = [
   { id: 'default', name: 'Premium Gold', color: '#ee8f0e' },
   { id: 'forest', name: 'Forest Green', color: '#389f66' },
   { id: 'ocean', name: 'Ocean Blue', color: '#0c8deb' },
-  { id: 'rust', name: 'Soft Terracotta', color: '#d95a28' }
+  { id: 'rust', name: 'Soft Terracotta', color: '#d95a28' },
+  { id: 'ruby', name: 'Ruby Red', color: '#de2b52' }
 ];
 
 export default function ThemeToggle() {
@@ -44,12 +45,12 @@ export default function ThemeToggle() {
         <div className="absolute right-0 top-full mt-3 p-5 bg-white dark:bg-dark-card rounded-2xl shadow-xl dark:shadow-2xl border border-gray-100 dark:border-dark-border w-[280px] origin-top-right animate-scale-in z-50">
           
           <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-3">Color Accent</h4>
-          <div className="flex items-center gap-3 mb-6">
+          <div className="grid grid-cols-5 gap-2.5 mb-6">
             {colorThemes.map((t) => (
               <button
                 key={t.id}
                 onClick={() => setColorTheme(t.id)}
-                className={`w-9 h-9 text-xs flex items-center justify-center rounded-full transition-all hover:scale-110 relative group ${
+                className={`w-8 h-8 text-xs flex items-center justify-center justify-self-center rounded-full transition-all hover:scale-110 relative group ${
                   colorTheme === t.id 
                     ? 'ring-2 ring-offset-2 ring-offset-white dark:ring-offset-dark-card ring-gray-900 dark:ring-white scale-110' 
                     : ''
