@@ -59,6 +59,21 @@ export default function QuoteRequestForm({
       return;
     }
 
+    try {
+      await fetch("/.netlify/functions/send-quote-sms", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          firstName: data.firstName,
+          phone: data.phone,
+        }),
+      });
+    } catch (error) {
+      console.error("SMS confirmation failed", error);
+    }
+
     reset();
   };
 
