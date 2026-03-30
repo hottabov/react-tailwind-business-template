@@ -1,5 +1,53 @@
 @use './variables' as *;
 
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Sansita';
+  src: url('/fonts/sansita-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 // ─── Tailwind layers ──────────────────────────────────────────────────────────
 @tailwind base;
 @tailwind components;
@@ -69,11 +117,6 @@
   }
 }
 
-// ─── Google Font import fallback (Vite also loads via index.html) ─────────────
-@import url('https://fonts.googleapis.com/css2?family=Sansita&family=Inter:wght@300;400;500;600;700;800&display=swap');
-
-
-
 // ─── Global resets & base styles ──────────────────────────────────────────────
 *,
 *::before,
@@ -105,6 +148,26 @@ body {
   font-family: 'Inter', ui-sans-serif, system-ui;
   line-height: $lh-body;
   -webkit-font-smoothing: antialiased;
+}
+
+.quote-phone-input {
+  @apply flex items-center gap-3 rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 transition-all focus-within:ring-2 focus-within:ring-brand-500 dark:border-dark-border dark:bg-dark-card;
+}
+
+.quote-phone-input .PhoneInputCountry {
+  @apply m-0 shrink-0;
+}
+
+.quote-phone-input .PhoneInputCountrySelectArrow {
+  @apply text-gray-400;
+}
+
+.quote-phone-input .PhoneInputInput {
+  @apply min-w-0 flex-1 border-0 bg-transparent p-0 text-gray-900 outline-none ring-0 dark:text-white;
+}
+
+.quote-phone-input .PhoneInputInput::placeholder {
+  @apply text-gray-400;
 }
 
 // ─── Custom scrollbar ─────────────────────────────────────────────────────────

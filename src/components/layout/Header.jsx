@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
+import Modal from "@/components/ui/Modal";
+import QuoteRequestForm from "@/components/ui/QuoteRequestForm";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { useTheme } from "@/context/ThemeContext";
 import useScrollUp from "@/hooks/useScrollUp";
@@ -38,6 +40,7 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
+  const [quoteModalOpen, setQuoteModalOpen] = useState(false);
   const [isSystemDark, setIsSystemDark] = useState(false);
   const { visible, atTop } = useScrollUp();
   const { theme } = useTheme();
@@ -47,6 +50,7 @@ export default function Header() {
     setMobileOpen(false);
     setServicesOpen(false);
     setCompanyOpen(false);
+    setQuoteModalOpen(false);
   }, [location]);
 
   useEffect(() => {
@@ -61,6 +65,10 @@ export default function Header() {
 
   const isDarkTheme = theme === "dark" || (theme === "system" && isSystemDark);
   const logoSrc = atTop || isDarkTheme ? logoLight : logoDark;
+  const openQuoteModal = () => {
+    setMobileOpen(false);
+    setQuoteModalOpen(true);
+  };
 
   const headerCls = `
     fixed top-0 left-0 right-0 z-50
@@ -135,12 +143,15 @@ export default function Header() {
           <div className="ml-2 shrink-0">
             <ThemeToggle />
           </div>
-          <Link
-            to="/contact"
+          <button
+            type="button"
+            onClick={() => {
+              openQuoteModal();
+            }}
             className="ml-1 shrink-0 whitespace-nowrap rounded-full bg-brand-500 px-4 py-2.5 text-white font-semibold transition-all duration-300 hover:scale-105 hover:bg-brand-600 shadow-md shadow-brand-500/30 lg:text-[15px] xl:ml-2 xl:px-5 xl:text-base"
           >
             Free Quote
-          </Link>
+          </button>
         </nav>
 
         <div className="flex items-center gap-3 lg:hidden">
@@ -234,14 +245,33 @@ export default function Header() {
               </NavLink>
             ),
           )}
-          <Link
-            to="/contact"
+          <button
+            type="button"
+            onClick={() => {
+              openQuoteModal();
+            }}
             className="w-full py-3 mt-3 font-bold text-center text-white transition-colors rounded-full bg-brand-500 hover:bg-brand-600"
           >
             Get a Free Quote
-          </Link>
+          </button>
         </nav>
       </div>
+
+      <Modal
+        open={quoteModalOpen}
+        onClose={() => setQuoteModalOpen(false)}
+        title="Tell Us About Your Project"
+      >
+        <p className="mb-6 max-w-xl text-base text-gray-600 dark:text-gray-300">
+          Send the basics and we&apos;ll help with the right next step, timing and
+          quote path.
+        </p>
+        <QuoteRequestForm
+          formName="quote-request"
+          formContext="header-modal"
+          submitLabel="Send Free Quote Request"
+        />
+      </Modal>
     </header>
   );
 }

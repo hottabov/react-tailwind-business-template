@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import {
   Phone,
   Mail,
@@ -8,6 +7,7 @@ import {
   ChevronDown,
 } from "lucide-react";
 import SEO from "@/components/ui/SEO";
+import QuoteRequestForm from "@/components/ui/QuoteRequestForm";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { seoData } from "@/data/seo";
 import contactHero from "@/assets/images/about/painting-outside.avif";
@@ -52,12 +52,6 @@ const contactFaqs = [
 
 export default function ContactPage() {
   const [openFaq, setOpenFaq] = useState(0);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitSuccessful },
-    reset,
-  } = useForm();
   const faqSchema = {
     "@type": "FAQPage",
     mainEntity: contactFaqs.map((faq) => ({
@@ -68,12 +62,6 @@ export default function ContactPage() {
         text: faq.answer,
       },
     })),
-  };
-
-  const onSubmit = (data) => {
-    // In production, POST to Netlify Forms or a backend endpoint
-    console.log("Form submitted:", data);
-    reset();
   };
 
   return (
@@ -104,135 +92,11 @@ export default function ContactPage() {
           {/* Contact form */}
           <div id="quote-form">
             <SectionHeading eyebrow="Contact Us" title="Send Us a Message" />
-
-            {isSubmitSuccessful && (
-              <div className="p-4 mb-6 text-green-700 border border-green-200 rounded-2xl bg-green-50 dark:bg-green-900/20 dark:border-green-800 dark:text-green-300">
-                ✅ Thanks! We'll be in touch within 24 hours.
-              </div>
-            )}
-
-            {/*
-              Netlify Forms — add data-netlify="true" and a hidden input with the form name
-              so Netlify can detect and handle this form in production.
-            */}
-            <form
-              onSubmit={handleSubmit(onSubmit)}
-              name="contact"
-              data-netlify="true"
-              className="space-y-5"
-            >
-              <input type="hidden" name="form-name" value="contact" />
-
-              <div className="grid gap-5 sm:grid-cols-2">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                    Full Name *
-                  </label>
-                  <input
-                    {...register("name", { required: "Name is required" })}
-                    placeholder="Jane Smith"
-                    className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {errors.name.message}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                    Phone *
-                  </label>
-                  <input
-                    {...register("phone", { required: "Phone is required" })}
-                    placeholder="0400 123 456"
-                    type="tel"
-                    className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                  />
-                  {errors.phone && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {errors.phone.message}
-                    </p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                  Email *
-                </label>
-                <input
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /\S+@\S+\.\S+/,
-                      message: "Invalid email",
-                    },
-                  })}
-                  placeholder="jane@example.com"
-                  type="email"
-                  className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                />
-                {errors.email && (
-                  <p className="mt-1 text-xs text-red-500">
-                    {errors.email.message}
-                  </p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                  Service Needed
-                </label>
-                <select
-                  {...register("service")}
-                  className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                >
-                  <option value="">Select a service...</option>
-                  <option>Interior Painting</option>
-                  <option>Exterior Painting</option>
-                  <option>Commercial Painting</option>
-                  <option>Roof Painting</option>
-                  <option>Fence & Deck Painting</option>
-                  <option>Colour Consultation</option>
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                  Suburb / Area
-                </label>
-                <input
-                  {...register("suburb")}
-                  placeholder="e.g. Richmond, Toorak, Brighton..."
-                  className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5">
-                  Message / Project Details
-                </label>
-                <textarea
-                  {...register("message")}
-                  rows={5}
-                  placeholder="Tell us about your project — size, current condition, timing, etc."
-                  className="w-full px-4 py-3 text-gray-900 transition-all border border-gray-200 resize-none rounded-xl dark:border-dark-border bg-gray-50 dark:bg-dark-card dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-bold text-lg
-                  transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-brand-500/30"
-              >
-                Send Message & Request Quote
-              </button>
-              <p className="text-sm text-center text-gray-400 dark:text-gray-500">
-                No spam, no pushy follow-up, just a clear next step and quote
-                advice.
-              </p>
-            </form>
+            <QuoteRequestForm
+              formName="quote-request"
+              formContext="contact-page"
+              submitLabel="Send Message"
+            />
           </div>
 
           {/* Contact info */}

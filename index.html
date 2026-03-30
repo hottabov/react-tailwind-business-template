@@ -3,15 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Fonts — Inter (body) + Sansita (headings) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
     <link rel="dns-prefetch" href="https://images.unsplash.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Sansita&family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>Melbourne Pro Painters</title>
     <!-- Netlify Identity widget -->
@@ -21,6 +14,61 @@
     ></script>
   </head>
   <body class="text-gray-800 transition-colors duration-300 bg-white dark:bg-dark-bg dark:text-gray-100">
+    <form
+      name="quote-request"
+      method="POST"
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+    >
+      <input type="hidden" name="form-name" value="quote-request" />
+      <input
+        type="hidden"
+        name="subject"
+        value="New lead from %{formName} (%{submissionId})"
+      />
+      <input type="text" name="bot-field" />
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="text" name="phone" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+      <input type="text" name="form_context" />
+      <input type="text" name="first_landing_page" />
+      <input type="text" name="first_page_url" />
+      <input type="text" name="first_referrer" />
+      <input type="text" name="first_page_title" />
+      <input type="text" name="first_captured_at" />
+      <input type="text" name="first_utm_source" />
+      <input type="text" name="first_utm_medium" />
+      <input type="text" name="first_utm_campaign" />
+      <input type="text" name="first_utm_term" />
+      <input type="text" name="first_utm_content" />
+      <input type="text" name="first_utm_id" />
+      <input type="text" name="first_gclid" />
+      <input type="text" name="first_fbclid" />
+      <input type="text" name="first_msclkid" />
+      <input type="text" name="first_ttclid" />
+      <input type="text" name="last_landing_page" />
+      <input type="text" name="last_page_url" />
+      <input type="text" name="last_page_path" />
+      <input type="text" name="last_referrer" />
+      <input type="text" name="last_page_title" />
+      <input type="text" name="last_captured_at" />
+      <input type="text" name="last_utm_source" />
+      <input type="text" name="last_utm_medium" />
+      <input type="text" name="last_utm_campaign" />
+      <input type="text" name="last_utm_term" />
+      <input type="text" name="last_utm_content" />
+      <input type="text" name="last_utm_id" />
+      <input type="text" name="last_gclid" />
+      <input type="text" name="last_fbclid" />
+      <input type="text" name="last_msclkid" />
+      <input type="text" name="last_ttclid" />
+      <input type="text" name="user_language" />
+      <input type="text" name="user_timezone" />
+      <input type="text" name="screen_size" />
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <!-- Redirect Netlify Identity users back to /admin after login -->
