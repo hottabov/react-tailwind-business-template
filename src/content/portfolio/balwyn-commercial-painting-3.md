@@ -1,11 +1,11 @@
 ---
-title: "Commercial Painting Transformation — Balwyn #3"
+title: "Commercial Painting Transformation — Balwyn"
 date: "2026-04-08"
 location: "Balwyn"
 category: "Commercial Painting"
-coverImage: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae?w=1200&q=80"
-beforeImage: "https://images.unsplash.com/photo-1560185127-6ed189bf02f4?w=1200&q=80"
-afterImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1772305595483-6b058aff40f9?w=1200&q=80"
+beforeImage: "https://images.unsplash.com/photo-1772299121503-cd62a57e3a26?w=1200&q=80"
+afterImage: "https://images.unsplash.com/photo-1771530789155-b1f03fbf82b5?w=1200&q=80"
 excerpt: "A commercial painting project in Balwyn with a story behind every brushstroke."
 showInSuburb: [Balwyn]
 showOnHomePage: false
@@ -33,7 +33,7 @@ We approached the project like a quiet reconstruction rather than a loud renovat
 ## The Turning Point
 
 Midway through the job, the client walked in, paused, and said:  
-*"Wait… is this actually my place?"*
+**"Wait… is this actually my place?"**
 
 That’s usually when we know we’re on the right track.
 

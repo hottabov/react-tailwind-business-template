@@ -1,9 +1,9 @@
 ---
-title: "Roof Painting Transformation — Albert Park #1"
+title: "Roof Painting Transformation — Albert Park"
 date: "2026-04-08"
 location: "Albert Park"
 category: "Roof Painting"
-coverImage: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
 beforeImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
 excerpt: "A roof painting project in Albert Park with a story behind every brushstroke."

@@ -3,9 +3,9 @@ title: "Interior Painting Transformation — Armadale #1"
 date: "2026-04-08"
 location: "Armadale"
 category: "Interior Painting"
-coverImage: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1770677350521-d5fdcbd74367?w=1200&q=80"
 beforeImage: "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=1200&q=80"
-afterImage: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae?w=1200&q=80"
+afterImage: "https://images.unsplash.com/photo-1770677350521-d5fdcbd74367?w=1200&q=80"
 excerpt: "A interior painting project in Armadale with a story behind every brushstroke."
 showInSuburb: [Armadale]
 showOnHomePage: false

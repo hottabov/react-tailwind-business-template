@@ -3,7 +3,7 @@ title: "Colour Consultation Transformation — Beaumaris #2"
 date: "2026-04-08"
 location: "Beaumaris"
 category: "Colour Consultation"
-coverImage: "https://images.unsplash.com/photo-1507089947367-19c1da9775ae?w=1200&q=80"
+coverImage: "https://images.unsplash.com/photo-1631127887321-16789171870b?w=1200&q=80"
 beforeImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
 excerpt: "A colour consultation project in Beaumaris with a story behind every brushstroke."
@@ -11,38 +11,95 @@ showInSuburb: [Beaumaris]
 showOnHomePage: false
 ---
 
-This project in **Beaumaris** started with a simple brief — “make it feel alive again.”  
-Naturally, that turned into something far more interesting.
+This project in **Beaumaris** started as a repaint request.
+
+It ended as a full room resurrection.
+
+The client originally asked to “freshen things up.”  
+Once we stepped inside, it became obvious — this space hadn’t just aged, it had been quietly falling apart for years.
 
 ## What We Found
 
-The space had personality... just not the kind you’d want to live with.
+The room felt heavy, tired, and slightly neglected — like it had been waiting for attention for too long.
 
-- Uneven surfaces and tired finishes  
-- Colours that looked like they were chosen during a mild crisis  
-- Layers of “quick fixes” from previous attempts  
+- Walls with uneven surfaces, dents, and old patch repairs  
+- Faded, yellowing paint that absorbed light instead of reflecting it  
+- Timber floors scratched, dull, and completely lifeless  
+- Window frames chipped and dry, with visible wear  
+- Doors that didn’t quite close properly anymore  
+- Ceiling with subtle cracks and uneven texture  
 
-## What We Did
+Nothing was dramatically broken.  
+But everything was just... off.
 
-We approached the project like a quiet reconstruction rather than a loud renovation.
+## Scope of Work
 
-- Careful prep work (the unglamorous but critical part)  
-- Precision painting with attention to detail  
-- Adjusted tones to match natural light throughout the day  
+What started as painting turned into a **full internal renovation of the room (~28 m²)**.
+
+- Surface preparation across all walls and ceiling  
+- Full repaint in a soft, warm light blue tone  
+- Restoration and refinishing of timber flooring  
+- Sanding and repainting of window frames and door  
+- Minor carpentry adjustments to improve door alignment  
+- Ceiling repair and smoothing  
+
+## Materials & Finishes
+
+- Walls: Dulux Wash&Wear Low Sheen — custom warm pale blue  
+- Ceiling: flat white for soft light diffusion  
+- Woodwork: semi-gloss enamel for durability  
+- Floors: sanded back to raw timber, sealed with satin finish  
+
+## The Process
+
+The first two days were not pretty.
+
+Dust, sanding, patching — the kind of work nobody posts on Instagram.
+
+Walls had to be leveled properly.  
+Old repairs had to be undone and redone.  
+The floor needed a full reset, not just a polish.
+
+At one point, the room looked worse than when we started.
+
+That’s usually the sign you're doing it right.
+
+## The Colour Decision
+
+We deliberately avoided pure white.
+
+Instead, we introduced a **very light warm blue tone** — just enough to:
+
+- soften the space  
+- reflect natural light from the window  
+- create a calm, breathable atmosphere  
+
+It’s the kind of colour you don’t immediately notice — but you feel it.
 
 ## The Turning Point
 
-Midway through the job, the client walked in, paused, and said:  
-*"Wait… is this actually my place?"*
+After the first full coat and floor finish, the space shifted completely.
 
-That’s usually when we know we’re on the right track.
+The client walked in, stood still for a few seconds, and said:
+> “It feels like a different house… not just a different room.”
+
+That was the moment the project clicked.
 
 ## Final Result
 
-The transformation isn’t just visual — it changes how the space feels.
+Every surface in the room was brought back to life:
 
-- Cleaner lines  
-- More intentional colour flow  
-- A sense of calm where there was chaos  
+- Walls — smooth, clean, softly illuminated  
+- Floor — restored grain, warm tone, subtle sheen  
+- Windows — crisp lines, no visual noise  
+- Door — aligned, solid, finished properly  
+- Ceiling — even, quiet, and light-reflective  
 
-And yes — the neighbours noticed.
+The room no longer felt “fixed”.
+
+It felt **reset**.
+
+Not louder.  
+Not trendier.  
+
+Just calm, balanced, and finally complete.
