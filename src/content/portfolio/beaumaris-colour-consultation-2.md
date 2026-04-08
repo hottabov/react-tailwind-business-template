@@ -1,13 +1,15 @@
 ---
 title: "Colour Consultation Transformation — Beaumaris #2"
-date: "2026-04-08"
-location: "Beaumaris"
-category: "Colour Consultation"
-coverImage: "https://images.unsplash.com/photo-1631127887321-16789171870b?w=1200&q=80"
-beforeImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
-afterImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80"
-excerpt: "A colour consultation project in Beaumaris with a story behind every brushstroke."
-showInSuburb: [Beaumaris]
+date: 2026-04-08
+location: Beaumaris
+category: Colour Consultation
+coverImage: https://images.unsplash.com/photo-1631127887321-16789171870b?w=1200&q=80
+beforeImage: /images/uploads/color-trans-beaumaris-before.avif
+afterImage: /images/uploads/color-trans-beaumaris-after.avif
+excerpt: A colour consultation project in Beaumaris with a story behind every
+  brushstroke.
+showInSuburb:
+  - Beaumaris
 showOnHomePage: false
 ---
 
