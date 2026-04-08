@@ -27,7 +27,7 @@ const portfolioFaqs = [
   {
     question: "Are these portfolio projects based in real Melbourne suburbs?",
     answer:
-      "Yes. Each project is tied to a real Melbourne suburb or area shown on the card and project page. Current locations include Richmond, Toorak, Doncaster, Fitzroy, Williamstown, Brighton, Bayside, Prahran, Collingwood, Southbank and Glen Waverley.",
+      "Yes. Each project is tied to a real Melbourne suburb or area shown on the card and project page. The portfolio now spans inner-east, bayside, western, northern and city-fringe locations so you can compare case studies closer to your own suburb and property type.",
   },
   {
     question: "What information can I compare on each portfolio project?",
@@ -160,7 +160,7 @@ export default function PortfolioPage() {
                 <img
                   loading="lazy"
                   src={item.frontmatter.coverImage}
-                  alt={item.frontmatter.title}
+                  alt={`${item.frontmatter.location} painters project - ${item.frontmatter.title}`}
                   className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />

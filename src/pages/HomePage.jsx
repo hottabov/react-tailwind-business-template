@@ -6,11 +6,14 @@ import CTA from "@/components/ui/CTA";
 import SectionHeading from "@/components/ui/SectionHeading";
 import StarRating from "@/components/ui/StarRating";
 import BrushStroke from "@/components/ui/BrushStroke";
+import AreasWeServeSection from "@/components/home/AreasWeServeSection";
+import PaintingServicesStorySection from "@/components/home/PaintingServicesStorySection";
+import RecentWorkSection from "@/components/portfolio/RecentWorkSection";
 import { seoData } from "@/data/seo";
-import { services } from "@/data/services";
-import { reviews } from "@/data/reviews";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { useBlogPosts } from "@/hooks/useBlogPosts";
+import { usePortfolioItems } from "@/hooks/usePortfolioItems";
+import { useReviews } from "@/hooks/useReviews";
 
 // Assets
 import heroImage from "@/assets/images/hero/hero-blog.avif";
@@ -34,15 +37,43 @@ const heroProof = [
   "Workmanship Warranty Included",
 ];
 
+function getFeaturedGridClassName(itemCount) {
+  if (itemCount === 1) {
+    return "mx-auto grid max-w-4xl gap-6";
+  }
+
+  if (itemCount === 2) {
+    return "mx-auto grid max-w-6xl gap-6 md:grid-cols-2";
+  }
+
+  return "grid gap-6 md:grid-cols-3";
+}
+
 export default function HomePage() {
   const blogPosts = useBlogPosts();
-  const featuredReviews = useMemo(() => reviews.slice(0, 3), []);
+  const portfolioItems = usePortfolioItems();
+  const reviews = useReviews();
+  const featuredPortfolioItems = useMemo(
+    () =>
+      portfolioItems
+        .filter((item) => item.frontmatter.showOnHomePage)
+        .slice(0, 3),
+    [portfolioItems],
+  );
+  const featuredReviews = useMemo(
+    () =>
+      reviews.filter((review) => review.frontmatter.showOnHomePage).slice(0, 3),
+    [reviews],
+  );
+  const featuredReviewsGridClassName = useMemo(
+    () => getFeaturedGridClassName(featuredReviews.length),
+    [featuredReviews.length],
+  );
   const recentPosts = useMemo(() => blogPosts.slice(0, 3), [blogPosts]);
   const [isMobileHero, setIsMobileHero] = useState(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   // Setup scroll animations for different sections
-  const [servicesRef, servicesVisible] = useScrollAnimation();
   const [whyUsTextRef, whyUsTextVisible] = useScrollAnimation();
   const [whyUsImgRef, whyUsImgVisible] = useScrollAnimation();
   const [reviewsRef, reviewsVisible] = useScrollAnimation();
@@ -141,17 +172,13 @@ export default function HomePage() {
             </span>
           </h1>
 
-          <p
-            className="max-w-2xl mx-auto mb-10 text-xl md:text-2xl text-white/80 animate-fade-up [animation-delay:100ms] [animation-fill-mode:backwards]"
-          >
+          <p className="max-w-2xl mx-auto mb-10 text-xl md:text-2xl text-white/80 animate-fade-up [animation-delay:100ms] [animation-fill-mode:backwards]">
             Interior, exterior and commercial painting for Melbourne homes and
             businesses. Fixed written quotes within 24 hours, careful
             preparation, and clean workmanship backed by a written warranty.
           </p>
 
-          <div
-            className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start animate-fade-up [animation-delay:200ms] [animation-fill-mode:backwards]"
-          >
+          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start animate-fade-up [animation-delay:200ms] [animation-fill-mode:backwards]">
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-white transition-all duration-300 rounded-full shadow-2xl bg-brand-500 hover:bg-brand-600 hover:scale-105 shadow-brand-500/40"
@@ -169,9 +196,7 @@ export default function HomePage() {
           </div>
 
           {/* Trust badges */}
-          <div
-            className="flex flex-wrap justify-center gap-6 text-sm mt-14 text-white/60 animate-fade-in [animation-delay:400ms] [animation-fill-mode:backwards]"
-          >
+          <div className="flex flex-wrap justify-center gap-6 text-sm mt-14 text-white/60 animate-fade-in [animation-delay:400ms] [animation-fill-mode:backwards]">
             {heroProof.map((b) => (
               <span key={b} className="flex items-center gap-2">
                 <CheckCircle size={15} className="text-brand-400" /> {b}
@@ -189,57 +214,17 @@ export default function HomePage() {
       </section>
 
       {/* ── SERVICES OVERVIEW ─────────────────────────────────────── */}
-      <section className="py-24 bg-gray-50 dark:bg-dark-card" ref={servicesRef}>
-        <div className="section-wrapper">
-          <div
-            className={`transition-all duration-700 transform ${
-              servicesVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-12"
-            }`}
-          >
-            <SectionHeading
-              eyebrow="What We Do"
-              title="Our Painting Services"
-              subtitle="From a single room to a full commercial building — we handle every painting project with the same precision and care."
-              center
-            />
-          </div>
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((s, i) => (
-              <Link
-                key={s.slug}
-                to={`/services/${s.slug}`}
-                className={`group bg-white dark:bg-dark-bg rounded-2xl overflow-hidden shadow-sm
-                  hover:shadow-xl transition-all duration-700 hover:-translate-y-1 border border-gray-100 dark:border-dark-border
-                  transform ${servicesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"}`}
-                style={{ transitionDelay: `${i * 100}ms` }} // Staggered delay based on index
-              >
-                <div className="relative overflow-hidden h-52">
-                  <img
-                    loading="lazy"
-                    src={s.thumbImage}
-                    alt={s.title}
-                    className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                </div>
-                <div className="p-6">
-                  <h3 className="mb-2 text-xl text-gray-900 font-display dark:text-white">
-                    {s.title}
-                  </h3>
-                  <p className="mb-4 text-sm text-gray-500 dark:text-gray-400 line-clamp-2">
-                    {s.summary}
-                  </p>
-                  <span className="inline-flex items-center gap-1 text-sm font-semibold transition-all duration-200 text-brand-500 group-hover:gap-2">
-                    Continue reading <ArrowRight size={14} />
-                  </span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PaintingServicesStorySection
+        title="Melbourne Painting Services"
+        subtitle="From a single room to a full commercial building — we handle every painting project with the same precision and care."
+      />
+
+      <RecentWorkSection
+        title="Melbourne Recent Work"
+        subtitle="A quick look at recent interior, exterior and roof transformations across Melbourne."
+        items={featuredPortfolioItems}
+        locationKeyword="Melbourne"
+      />
 
       {/* ── WHY CHOOSE US ─────────────────────────────────────────── */}
       <section className="py-24 overflow-hidden bg-white dark:bg-dark-bg">
@@ -314,69 +299,75 @@ export default function HomePage() {
       </section>
 
       {/* ── RECENT REVIEWS TEASER ─────────────────────────────────── */}
-      <section className="py-24 bg-gray-50 dark:bg-dark-card" ref={reviewsRef}>
-        <div className="section-wrapper">
-          <div
-            className={`transition-all duration-700 transform ${
-              reviewsVisible
-                ? "opacity-100 translate-y-0 scale-100"
-                : "opacity-0 translate-y-10 scale-95"
-            }`}
-          >
-            <SectionHeading
-              eyebrow="Testimonials"
-              title="What Our Clients Say"
-              center
-            />
-          </div>
+      {featuredReviews.length > 0 ? (
+        <section className="py-24 bg-gray-50 dark:bg-dark-card" ref={reviewsRef}>
+          <div className="section-wrapper">
+            <div
+              className={`transition-all duration-700 transform ${
+                reviewsVisible
+                  ? "opacity-100 translate-y-0 scale-100"
+                  : "opacity-0 translate-y-10 scale-95"
+              }`}
+            >
+              <SectionHeading
+                eyebrow="Testimonials"
+                title="What Our Clients Say"
+                center
+              />
+            </div>
 
-          <div className="grid gap-6 mb-10 md:grid-cols-3">
-            {featuredReviews.map((r, i) => (
-              <div
-                key={r.id}
-                className={`bg-white dark:bg-dark-bg rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-dark-border
-                  transition-all duration-700 transform ${
-                    reviewsVisible
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 translate-y-16"
-                  }`}
-                style={{ transitionDelay: `${200 + i * 150}ms` }}
-              >
-                <StarRating />
-                <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-4">
-                  "{r.text}"
-                </p>
-                <div className="flex items-center gap-3 mt-5">
-                  <img
-                    loading="lazy"
-                    src={r.avatar}
-                    alt={r.name}
-                    className="object-cover w-10 h-10 rounded-full"
-                  />
-                  <div>
-                    <div className="text-sm font-semibold text-gray-900 dark:text-white">
-                      {r.name}
+            <div className={`${featuredReviewsGridClassName} mb-10`}>
+              {featuredReviews.map((review, i) => (
+                <div
+                  key={review.slug}
+                  className={`bg-white dark:bg-dark-bg rounded-2xl p-6 shadow-sm border border-gray-100 dark:border-dark-border
+                    transition-all duration-700 transform ${
+                      reviewsVisible
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-16"
+                    }`}
+                  style={{ transitionDelay: `${200 + i * 150}ms` }}
+                >
+                  <StarRating count={review.frontmatter.rating} />
+                  <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300 line-clamp-4">
+                    "{review.content}"
+                  </p>
+                  <div className="flex items-center gap-3 mt-5">
+                    <img
+                      loading="lazy"
+                      src={review.frontmatter.avatar}
+                      alt={review.frontmatter.name}
+                      className="object-cover w-10 h-10 rounded-full"
+                    />
+                    <div>
+                      <div className="text-sm font-semibold text-gray-900 dark:text-white">
+                        {review.frontmatter.name}
+                      </div>
+                      <div className="text-xs text-gray-400">
+                        {review.frontmatter.business}
+                      </div>
                     </div>
-                    <div className="text-xs text-gray-400">{r.business}</div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div
-            className={`text-center transition-all duration-1000 delay-700 ${
-              reviewsVisible ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <Link
-              to="/reviews"
-              className="inline-flex items-center gap-2 font-semibold transition-all text-brand-500 hover:gap-3"
+              ))}
+            </div>
+            <div
+              className={`text-center transition-all duration-1000 delay-700 ${
+                reviewsVisible ? "opacity-100" : "opacity-0"
+              }`}
             >
-              Read All 12 Reviews <ArrowRight size={16} />
-            </Link>
+              <Link
+                to="/reviews"
+                className="inline-flex items-center gap-2 font-semibold transition-all text-brand-500 hover:gap-3"
+              >
+                Read All {reviews.length} Reviews <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : null}
+
+      <AreasWeServeSection />
 
       {/* ── LATEST FROM THE BLOG ──────────────────────────────────── */}
       <section className="py-24 bg-white dark:bg-dark-bg" ref={blogRef}>

@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=
 beforeImage: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&q=80"
 excerpt: "A full repaint to suit a young family's furniture, art and lifestyle."
+showInSuburb: []
+showOnHomePage: false
 ---
 
 The previous owners loved feature colours; every room was different. Our clients wanted something calmer and more cohesive.

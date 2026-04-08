@@ -12,7 +12,7 @@ export const seoData = {
   home: {
     title: 'Melbourne Pro Painters | Painters for Homes & Businesses in Melbourne',
     description:
-      "Interior, exterior and commercial painting for Melbourne homes and businesses.  within 24 hours, premium preparation, and warranty-backed workmanship.",
+      "Interior, exterior and commercial painting for Melbourne homes and businesses. Quotes within 24 hours, premium preparation, and warranty-backed workmanship.",
     keywords:
       'house painters Melbourne, interior painters Melbourne, exterior painters Melbourne, residential painting Melbourne, commercial painters Melbourne',
     image: homeImage,
@@ -57,7 +57,7 @@ export const seoData = {
       'painting prices Melbourne, cost to paint a house Melbourne, painters rates, interior painting cost, exterior painting cost Melbourne, affordable painters',
     image: pricingImage,
   },
-    about: {
+  about: {
     title: 'About Us | Our Story | Melbourne Pro Painters',
     description:
       'Learn about Melbourne Pro Painters. From our humble beginnings in Windsor to painting homes across all Melbourne suburbs. Discover our values and commitment to quality.',

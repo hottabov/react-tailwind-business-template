@@ -1,12 +1,14 @@
 ---
-title: "Federation Cottage Facade Restoration — Fitzroy"
+title: "Federation Cottage Facade Restoration — Toorak"
 date: "2025-02-21"
-location: "Fitzroy"
+location: "Toorak"
 category: "Exterior"
 coverImage: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=1200&q=80"
 beforeImage: "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1598228723793-52759bba239c?w=1200&q=80"
 excerpt: "A careful repaint that respects the period details while freshening the street appeal."
+showInSuburb: [Toorak]
+showOnHomePage: false
 ---
 
 This classic Federation cottage had beautiful fretwork and details that were lost under layers of old, peeling paint.

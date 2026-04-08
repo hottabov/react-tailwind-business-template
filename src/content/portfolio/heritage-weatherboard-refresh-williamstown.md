@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200
 beforeImage: "https://images.unsplash.com/photo-1512914890250-353c97c9e7e2?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
 excerpt: "Peeling paint and UV damage replaced with a durable, classic coastal palette."
+showInSuburb: [Williamstown]
+showOnHomePage: true
 ---
 
 This heritage weatherboard cottage had peeling paint, exposed timber and serious UV damage on the western side.

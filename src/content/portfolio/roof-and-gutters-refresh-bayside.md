@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200
 beforeImage: "https://images.unsplash.com/photo-1505843513577-22bb7d21e455?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80"
 excerpt: "A cohesive new roof and gutter colour pulled the whole facade together."
+showInSuburb: []
+showOnHomePage: false
 ---
 
 The existing roof and gutter colours clashed with the freshly painted render. Rather than repaint the walls again, the owners chose to update the metalwork.

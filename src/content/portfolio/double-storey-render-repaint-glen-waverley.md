@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200
 beforeImage: "https://images.unsplash.com/photo-1494526585095-c41746248156?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&q=80"
 excerpt: "A dated cream render updated to a modern two-tone grey scheme."
+showInSuburb: []
+showOnHomePage: false
 ---
 
 The original cream render on this Glen Waverley home had become patchy and stained. The owners wanted a cleaner, more contemporary street presence.

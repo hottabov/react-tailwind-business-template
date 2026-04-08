@@ -17,6 +17,7 @@ import AboutPage from "@/pages/AboutPage";
 import ContactPage from "@/pages/ContactPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import PortfolioItemPage from "@/pages/PortfolioItemPage";
+import SuburbPage from "@/pages/SuburbPage";
 
 /**
  * App — root component.
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/portfolio/:slug" element={<PortfolioItemPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/:suburbSlug" element={<SuburbPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Layout>

@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1200&q=
 beforeImage: "https://images.unsplash.com/photo-1520256862855-398228c41684?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1562259929-b4e1fd3aef09?w=1200&q=80"
 excerpt: "A silvered, dry hardwood fence brought back to life with rich timber tones."
+showInSuburb: []
+showOnHomePage: false
 ---
 
 The hardwood fence around this Prahran pool had gone pale and dry, blending into the background instead of framing the space.

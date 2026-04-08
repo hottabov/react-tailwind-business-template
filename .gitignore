@@ -38,6 +38,10 @@ build/
 *.sln
 *.sw?
 
+# ai tools
+.codex
+.continue
+
 # macOS specific
 .AppleDouble
 .LSOverride
@@ -63,3 +67,4 @@ coverage/
 # Misc
 .eslintcache
 .stylelintcache
+

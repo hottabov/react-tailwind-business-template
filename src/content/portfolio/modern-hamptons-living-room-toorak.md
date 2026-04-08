@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200
 beforeImage: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80"
 excerpt: "From dark and dated to bright Hamptons-inspired elegance in a single week."
+showInSuburb: [Toorak]
+showOnHomePage: false
 ---
 
 This Toorak living room had great bones — high ceilings, timber floors and natural light — but the brown walls and yellowed ceilings dragged everything down.

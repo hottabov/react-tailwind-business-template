@@ -1,12 +1,14 @@
 ---
-title: "Spotted Gum Deck Revival — St Kilda"
+title: "Spotted Gum Deck Revival — Toorak"
 date: "2025-05-05"
-location: "St Kilda"
+location: "Toorak"
 category: "Deck"
 coverImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 beforeImage: "https://images.unsplash.com/photo-1523419409543-3e4f83b9b4c9?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
 excerpt: "Grey, weathered decking transformed back to warm, rich timber."
+showInSuburb: [Toorak]
+showOnHomePage: false
 ---
 
 Years of sun and sea air had turned this beautiful spotted gum deck a flat grey. The surface felt rough and the old coating was patchy.

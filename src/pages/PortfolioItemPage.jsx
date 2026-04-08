@@ -41,14 +41,14 @@ export default function PortfolioItemPage() {
     frontmatter.beforeImage
       ? {
           src: frontmatter.beforeImage,
-          alt: `${frontmatter.title} before painting`,
+          alt: `${frontmatter.location} painters before result for ${frontmatter.title}`,
           label: 'Before',
         }
       : null,
     frontmatter.afterImage
       ? {
           src: frontmatter.afterImage,
-          alt: `${frontmatter.title} after painting`,
+          alt: `${frontmatter.location} painters after result for ${frontmatter.title}`,
           label: 'After',
         }
       : null,
@@ -87,7 +87,7 @@ export default function PortfolioItemPage() {
   return (
     <>
       <SEO
-        title={`${frontmatter.title} | Painting Portfolio | Melbourne Pro Painters`}
+        title={`${frontmatter.title} | ${frontmatter.location} Painters Portfolio | Melbourne Pro Painters`}
         description={frontmatter.excerpt}
         image={frontmatter.afterImage || frontmatter.coverImage}
         schema={{
@@ -107,7 +107,7 @@ export default function PortfolioItemPage() {
       <section className="relative h-[55vh] min-h-[380px] flex items-end overflow-hidden">
         <img
           src={frontmatter.coverImage}
-          alt={frontmatter.title}
+          alt={`${frontmatter.location} painters project - ${frontmatter.title}`}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="hero-overlay absolute inset-0" />
@@ -209,7 +209,7 @@ export default function PortfolioItemPage() {
                       <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200 dark:bg-gray-700">
                         <img loading="lazy"
                           src={sp.frontmatter.coverImage}
-                          alt={sp.frontmatter.title}
+                          alt={`${sp.frontmatter.location} painters project - ${sp.frontmatter.title}`}
                           className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                       </div>

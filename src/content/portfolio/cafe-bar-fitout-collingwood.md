@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=
 beforeImage: "https://images.unsplash.com/photo-1521017432531-fbd92d768814?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=1200&q=80"
 excerpt: "From an empty shell to a warm, atmospheric café and bar with layered paint finishes."
+showInSuburb: []
+showOnHomePage: false
 ---
 
 This hospitality space started as a bare concrete and plaster shell. Our job was to bring the designer's concept to life with paint.

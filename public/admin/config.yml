@@ -34,4 +34,75 @@ collections:
       - { label: "Before Image", name: "beforeImage",  widget: "image", required: false }
       - { label: "After Image",  name: "afterImage",   widget: "image", required: false }
       - { label: "Excerpt",      name: "excerpt",      widget: "text" }
+      - label: "Show in Suburb"
+        name: "showInSuburb"
+        widget: "select"
+        required: false
+        multiple: true
+        hint: "Leave empty to hide this project from all suburb pages."
+        options:
+          - "Toorak"
+          - "South Yarra"
+          - "Brighton"
+          - "Camberwell"
+          - "Canterbury"
+          - "Hawthorn"
+          - "Kew"
+          - "Balwyn"
+          - "Armadale"
+          - "Malvern"
+          - "Elsternwick"
+          - "Albert Park"
+          - "Middle Park"
+          - "Port Melbourne"
+          - "Beaumaris"
+          - "Black Rock"
+          - "Sandringham"
+          - "Essendon"
+          - "Strathmore"
+          - "Ivanhoe"
+          - "Williamstown"
+      - { label: "Show on the main page?", name: "showOnHomePage", widget: "boolean", required: false, default: false }
       - { label: "Body",         name: "body",         widget: "markdown", hint: "Describe what we did, what changed, before & after." }
+
+  - name: "reviews"
+    label: "Customer Reviews"
+    folder: "src/content/reviews"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Reviewer Name", name: "name", widget: "string" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Business / Attribution", name: "business", widget: "string", hint: "Example: Homeowner — Williamstown" }
+      - { label: "Avatar", name: "avatar", widget: "image" }
+      - { label: "Rating", name: "rating", widget: "number", required: false, value_type: "int", min: 1, max: 5, step: 1, default: 5 }
+      - label: "Show in Suburb"
+        name: "showInSuburb"
+        widget: "select"
+        required: false
+        multiple: true
+        hint: "Leave empty to hide this review from all suburb pages."
+        options:
+          - "Toorak"
+          - "South Yarra"
+          - "Brighton"
+          - "Camberwell"
+          - "Canterbury"
+          - "Hawthorn"
+          - "Kew"
+          - "Balwyn"
+          - "Armadale"
+          - "Malvern"
+          - "Elsternwick"
+          - "Albert Park"
+          - "Middle Park"
+          - "Port Melbourne"
+          - "Beaumaris"
+          - "Black Rock"
+          - "Sandringham"
+          - "Essendon"
+          - "Strathmore"
+          - "Ivanhoe"
+          - "Williamstown"
+      - { label: "Show on the main page?", name: "showOnHomePage", widget: "boolean", required: false, default: false }
+      - { label: "Review Text", name: "body", widget: "markdown" }

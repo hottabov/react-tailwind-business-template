@@ -7,6 +7,8 @@ coverImage: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1200
 beforeImage: "https://images.unsplash.com/photo-1507089947368-19c1da9775ae?w=1200&q=80"
 afterImage: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1200&q=80"
 excerpt: "From moss-covered and faded to crisp, clean terracotta that looks new again."
+showInSuburb: [Brighton]
+showOnHomePage: false
 ---
 
 This Brighton home had a beautiful terracotta roof that was hidden under moss, lichen and years of grime.

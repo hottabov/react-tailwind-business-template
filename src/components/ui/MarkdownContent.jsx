@@ -32,6 +32,53 @@ function Heading({ level, text, className }) {
   );
 }
 
+function renderBlockquote(lines, startIndex) {
+  const quoteLines = [];
+  let i = startIndex;
+
+  while (i < lines.length && lines[i].trim().startsWith('>')) {
+    quoteLines.push(lines[i].replace(/^\s*>\s?/, ''));
+    i++;
+  }
+
+  const paragraphs = [];
+  let currentParagraph = [];
+
+  quoteLines.forEach((line) => {
+    if (line.trim()) {
+      currentParagraph.push(line.trim());
+      return;
+    }
+
+    if (currentParagraph.length) {
+      paragraphs.push(currentParagraph.join(' '));
+      currentParagraph = [];
+    }
+  });
+
+  if (currentParagraph.length) {
+    paragraphs.push(currentParagraph.join(' '));
+  }
+
+  return {
+    element: (
+      <blockquote
+        key={`blockquote-${startIndex}`}
+        className="my-8 rounded-[1.75rem] border-l-4 border-brand-500/90 bg-brand-50/70 px-6 py-5 shadow-[0_24px_60px_rgba(15,23,42,0.08)] ring-1 ring-brand-100/80 backdrop-blur-sm transition-colors dark:border-brand-400/80 dark:bg-brand-950/25 dark:ring-brand-900/60"
+      >
+        {paragraphs.map((paragraph, paragraphIndex) => (
+          <p
+            key={`${startIndex}-${paragraphIndex}`}
+            className="mb-0 text-lg leading-relaxed text-gray-700 dark:text-gray-100"
+            dangerouslySetInnerHTML={{ __html: renderInlineMarkdown(paragraph) }}
+          />
+        ))}
+      </blockquote>
+    ),
+    nextIndex: i,
+  };
+}
+
 export default function MarkdownContent({ text }) {
   const lines = text.trim().split('\n');
   const els = [];
@@ -122,6 +169,11 @@ export default function MarkdownContent({ text }) {
           {items}
         </ol>
       );
+      continue;
+    } else if (l.trim().startsWith('>')) {
+      const { element, nextIndex } = renderBlockquote(lines, i);
+      els.push(element);
+      i = nextIndex;
       continue;
     } else if (l.trim()) {
       els.push(
