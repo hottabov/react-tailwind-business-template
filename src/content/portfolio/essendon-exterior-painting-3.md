@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Essendon #3"
 date: "2026-04-08"

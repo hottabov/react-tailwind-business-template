@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Strathmore #2"
 date: "2026-04-08"

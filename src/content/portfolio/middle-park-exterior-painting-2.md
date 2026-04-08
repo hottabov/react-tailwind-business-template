@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Middle Park #2"
 date: "2026-04-08"

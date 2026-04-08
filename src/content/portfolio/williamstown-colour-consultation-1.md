@@ -1,4 +1,3 @@
-
 ---
 title: "Colour Consultation Transformation — Williamstown #1"
 date: "2026-04-08"

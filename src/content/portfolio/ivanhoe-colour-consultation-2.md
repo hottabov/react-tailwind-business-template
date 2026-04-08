@@ -1,4 +1,3 @@
-
 ---
 title: "Colour Consultation Transformation — Ivanhoe #2"
 date: "2026-04-08"

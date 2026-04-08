@@ -1,4 +1,3 @@
-
 ---
 title: "Fence & Deck Transformation — South Yarra #1"
 date: "2026-04-08"

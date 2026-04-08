@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Brighton #3"
 date: "2026-04-08"

@@ -1,4 +1,3 @@
-
 ---
 title: "Interior Painting Transformation — Essendon #2"
 date: "2026-04-08"

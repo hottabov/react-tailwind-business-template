@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Camberwell #1"
 date: "2026-04-08"

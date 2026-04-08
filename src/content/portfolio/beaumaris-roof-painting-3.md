@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Beaumaris #3"
 date: "2026-04-08"

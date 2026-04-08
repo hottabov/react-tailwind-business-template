@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Armadale #2"
 date: "2026-04-08"

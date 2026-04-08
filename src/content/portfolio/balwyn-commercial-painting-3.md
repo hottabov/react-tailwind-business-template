@@ -1,4 +1,3 @@
-
 ---
 title: "Commercial Painting Transformation — Balwyn #3"
 date: "2026-04-08"

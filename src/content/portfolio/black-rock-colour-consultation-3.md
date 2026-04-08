@@ -1,4 +1,3 @@
-
 ---
 title: "Colour Consultation Transformation — Black Rock #3"
 date: "2026-04-08"

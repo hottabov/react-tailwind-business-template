@@ -1,6 +1,5 @@
-
 ---
-title: "Colour Consultation Transformation — Albert Park #3"
+title: "Colour Consultation Transformation — Albert Park"
 date: "2026-04-08"
 location: "Albert Park"
 category: "Colour Consultation"

@@ -1,4 +1,3 @@
-
 ---
 title: "Interior Painting Transformation — Williamstown #3"
 date: "2026-04-08"

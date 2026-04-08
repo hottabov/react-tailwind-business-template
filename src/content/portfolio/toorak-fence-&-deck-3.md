@@ -1,4 +1,3 @@
-
 ---
 title: "Fence & Deck Transformation — Toorak #3"
 date: "2026-04-08"

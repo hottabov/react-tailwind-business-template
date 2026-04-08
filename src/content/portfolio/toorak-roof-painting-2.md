@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Toorak #2"
 date: "2026-04-08"

@@ -1,4 +1,3 @@
-
 ---
 title: "Fence & Deck Transformation — Black Rock #2"
 date: "2026-04-08"

@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Sandringham #2"
 date: "2026-04-08"

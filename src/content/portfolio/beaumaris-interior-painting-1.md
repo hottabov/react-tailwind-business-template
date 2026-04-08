@@ -1,4 +1,3 @@
-
 ---
 title: "Interior Painting Transformation — Beaumaris #1"
 date: "2026-04-08"

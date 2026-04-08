@@ -1,4 +1,3 @@
-
 ---
 title: "Fence & Deck Transformation — Camberwell #3"
 date: "2026-04-08"

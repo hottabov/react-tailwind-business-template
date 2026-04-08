@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Canterbury #3"
 date: "2026-04-08"

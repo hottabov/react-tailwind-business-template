@@ -1,4 +1,3 @@
-
 ---
 title: "Roof Painting Transformation — Kew #2"
 date: "2026-04-08"

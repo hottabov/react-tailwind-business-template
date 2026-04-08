@@ -1,4 +1,3 @@
-
 ---
 title: "Commercial Painting Transformation — Albert Park #2"
 date: "2026-04-08"

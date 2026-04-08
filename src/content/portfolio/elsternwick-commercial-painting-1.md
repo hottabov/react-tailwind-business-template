@@ -1,4 +1,3 @@
-
 ---
 title: "Commercial Painting Transformation — Elsternwick #1"
 date: "2026-04-08"

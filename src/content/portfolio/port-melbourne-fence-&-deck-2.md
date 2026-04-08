@@ -1,4 +1,3 @@
-
 ---
 title: "Fence & Deck Transformation — Port Melbourne #2"
 date: "2026-04-08"

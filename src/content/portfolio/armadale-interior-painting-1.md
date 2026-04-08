@@ -1,4 +1,3 @@
-
 ---
 title: "Interior Painting Transformation — Armadale #1"
 date: "2026-04-08"

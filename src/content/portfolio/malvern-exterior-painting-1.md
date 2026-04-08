@@ -1,4 +1,3 @@
-
 ---
 title: "Exterior Painting Transformation — Malvern #1"
 date: "2026-04-08"
